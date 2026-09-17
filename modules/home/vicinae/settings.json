@@ -1,0 +1,14 @@
+{
+  "global_shortcuts": {
+    "toggle": "control+space"
+  },
+  "providers": {
+    "wm": {
+      "entrypoints": {
+        "switch-windows": {
+          "shortcut": "super+control+alt+shift+W"
+        }
+      }
+    }
+  }
+}

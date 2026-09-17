@@ -1,0 +1,9 @@
+onboarding = false
+
+[[keys.command]]
+key = "prefix+t"
+type = "popup"
+command = "zsh"
+description = "popup terminal"
+width = "80%"
+height = "80%"

@@ -1,0 +1,58 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(.env)",
+      "Read(*.env)",
+      "Read(.env.*)",
+      "Bash(cat *.env*)",
+      "Bash(grep *.env*)",
+      "Bash(npx:*)",
+      "Bash(bunx:*)",
+      "Bash(bun x:*)",
+      "Bash(nix run:*)",
+      "Bash(pnpm dlx:*)",
+      "Bash(yarn dlx:*)",
+      "Bash(uvx:*)",
+      "Bash(pipx run:*)"
+    ]
+  },
+  "model": "fable",
+  "hooks": {},
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.ts"
+  },
+  "enabledPlugins": {
+    "codex@openai-codex": true,
+    "ast-grep@ast-grep-marketplace": true
+  },
+  "extraKnownMarketplaces": {
+    "anthropic-agent-skills": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/skills"
+      }
+    },
+    "openai-codex": {
+      "source": {
+        "source": "github",
+        "repo": "openai/codex-plugin-cc"
+      }
+    },
+    "ast-grep-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "ast-grep/agent-skill"
+      }
+    }
+  },
+  "effortLevel": "max",
+  "attribution": {
+    "commit": "",
+    "pr": "",
+    "sessionUrl": false
+  },
+  "autoMemoryEnabled": false,
+  "skipWorkflowUsageWarning": false,
+  "skipAutoPermissionPrompt": true
+}
