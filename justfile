@@ -20,6 +20,9 @@ default:
 update:
   @just update-{{host}}
 
+# Update every input regardless of host (used by CI).
+update-all: update-flake _update-node-packages _update-jmc fmt
+
 # Update flake.lock only.
 update-flake:
   nix flake update

@@ -1,0 +1,66 @@
+name: Update dependencies
+
+on:
+  schedule:
+    - cron: "0 0 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: write
+
+env:
+  NIX_CONF: |
+    extra-substituters = https://cache.numtide.com https://zabrze-nix.cachix.org
+    extra-trusted-public-keys = niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g= zabrze-nix.cachix.org-1:X36vl+otCAj6rchY63NSY16K/xbyiChWm5gVKtaY0Rg=
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: nixbuild/nix-quick-install-action@9f63be77f412a248c9d9a65a4c82cf066cdf8f0c # v35
+        with:
+          nix_conf: ${{ env.NIX_CONF }}
+
+      - name: Update every input
+        id: update
+        run: |
+          set -euo pipefail
+          source .github/scripts/version-table.sh
+
+          cp flake.lock "$RUNNER_TEMP/flake.lock.before"
+          before=$(package_versions)
+
+          nix develop --command just update-all
+
+          after=$(package_versions)
+          inputs=$(input_rows "$RUNNER_TEMP/flake.lock.before" flake.lock)
+          packages=$(package_rows "$before" "$after")
+          {
+            echo "body<<EOF"
+            version_body 'Automated `just update-all`: `nix flake update`, npm packages, and JDK Mission Control.' "$inputs" "$packages"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
+        id: pr
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: chore/update-dependencies
+          delete-branch: true
+          commit-message: "chore: update dependencies"
+          title: "chore: update dependencies"
+          labels: |
+            automated
+            dependencies
+          body: ${{ steps.update.outputs.body }}
+
+      - name: Trigger CI
+        if: steps.pr.outputs.pull-request-operation == 'created' || steps.pr.outputs.pull-request-operation == 'updated'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run ci.yml --ref "${{ steps.pr.outputs.pull-request-branch }}"

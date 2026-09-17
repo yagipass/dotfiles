@@ -153,7 +153,12 @@
             };
 
             devShells.default = pkgs.mkShellNoCC {
-              packages = [ pkgs.just ] ++ config.pre-commit.settings.enabledPackages;
+              packages = [
+                pkgs.just
+                pkgs.bun
+                pkgs.nodejs
+              ]
+              ++ config.pre-commit.settings.enabledPackages;
               shellHook = config.pre-commit.installationScript;
             };
 
