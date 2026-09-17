@@ -11,6 +11,9 @@ updates:
       default-days: 7
     commit-message:
       prefix: "ci"
+    labels:
+      - automated
+      - dependencies
     groups:
       github-actions:
         patterns:
