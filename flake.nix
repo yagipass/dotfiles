@@ -138,6 +138,12 @@
                 package = config.treefmt.build.wrapper;
               };
               statix.enable = true;
+              actionlint.enable = true;
+              shellcheck = {
+                enable = true;
+                excludes = [ "^\\.envrc$" ];
+              };
+              typos.enable = true;
               gitleaks = {
                 enable = true;
                 entry = "${pkgs.gitleaks}/bin/gitleaks git --pre-commit --staged --redact --no-banner";

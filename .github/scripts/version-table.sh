@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 package_versions() {
   local apply='ps: map (p: { name = p.pname or p.name; version = p.version or null; }) ps'
   {
