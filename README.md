@@ -1,5 +1,7 @@
 # dotfiles
 
+[![CI](https://github.com/yagipass/dotfiles/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/yagipass/dotfiles/actions/workflows/ci.yml)
+
 My dotfiles for macOS and NixOS-WSL, managed with nix-darwin and Home Manager. `flake.nix` defines the outputs and `justfile` is the entry point for day-to-day operations.
 
 The checkout location must match `dotfilesPath` in `flake.nix`.
