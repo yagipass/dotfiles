@@ -7,6 +7,8 @@ updates:
       day: monday
       time: "09:00"
       timezone: Asia/Tokyo
+    cooldown:
+      default-days: 7
     commit-message:
       prefix: "ci"
     groups:
