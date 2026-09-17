@@ -29,8 +29,19 @@ jobs:
         with:
           nix_conf: ${{ env.NIX_CONF }}
 
+      - uses: nix-community/cache-nix-action@7df957e333c1e5da7721f60227dbba6d06080569 # v7.0.2
+        with:
+          primary-key: nix-${{ runner.os }}-${{ hashFiles('**/*.nix', 'flake.lock') }}
+          restore-prefixes-first-match: nix-${{ runner.os }}-
+          save: ${{ github.ref == 'refs/heads/main' }}
+          gc-max-store-size: 0
+
       - name: Check flake
         run: nix flake check . --show-trace
+
+      - name: Root check outputs for the cache
+        if: github.ref == 'refs/heads/main'
+        run: bash .github/scripts/gc-roots.sh
 
   check-darwin:
     runs-on: macos-latest
@@ -42,5 +53,16 @@ jobs:
         with:
           nix_conf: ${{ env.NIX_CONF }}
 
+      - uses: nix-community/cache-nix-action@7df957e333c1e5da7721f60227dbba6d06080569 # v7.0.2
+        with:
+          primary-key: nix-${{ runner.os }}-${{ hashFiles('**/*.nix', 'flake.lock') }}
+          restore-prefixes-first-match: nix-${{ runner.os }}-
+          save: ${{ github.ref == 'refs/heads/main' }}
+          gc-max-store-size: 0
+
       - name: Check flake
         run: nix flake check . --show-trace
+
+      - name: Root check outputs for the cache
+        if: github.ref == 'refs/heads/main'
+        run: bash .github/scripts/gc-roots.sh
