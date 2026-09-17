@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 set -euo pipefail
 
 mkdir -p "$RUNNER_TEMP/gc-roots"

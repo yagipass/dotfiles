@@ -42,6 +42,7 @@ jobs:
           packages=$(package_rows "$before" "$after")
           {
             echo "body<<EOF"
+            # shellcheck disable=SC2016
             version_body 'Automated `just update-all`: `nix flake update`, npm packages, and JDK Mission Control.' "$inputs" "$packages"
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
