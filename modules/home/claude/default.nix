@@ -3,7 +3,7 @@
 {
   home.file = {
     ".claude/CLAUDE.md".source =
-      config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/modules/home/claude/CLAUDE.md";
+      config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/modules/home/codex/AGENTS.md";
     ".claude/settings.json".source =
       config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/modules/home/claude/settings.json";
     ".claude/statusline.ts".source =
