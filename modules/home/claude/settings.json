@@ -1,4 +1,9 @@
 {
+  "attribution": {
+    "commit": "",
+    "pr": "",
+    "sessionUrl": false
+  },
   "permissions": {
     "deny": [
       "Read(.env)",
@@ -16,7 +21,7 @@
       "Bash(pipx run:*)"
     ]
   },
-  "model": "fable",
+  "model": "opus",
   "hooks": {},
   "statusLine": {
     "type": "command",
@@ -46,11 +51,13 @@
       }
     }
   },
-  "effortLevel": "max",
-  "attribution": {
-    "commit": "",
-    "pr": "",
-    "sessionUrl": false
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "xhigh"
+    },
+    "claude-fable-5-1": {
+      "effortLevel": "xhigh"
+    }
   },
   "autoMemoryEnabled": false,
   "skipWorkflowUsageWarning": false,
