@@ -20,12 +20,20 @@
         input = "chrome-devtools-mcp-skills";
         subdir = "skills";
       };
+      verbatime = {
+        input = "verbatime";
+        subdir = "skills";
+      };
     };
 
     skills.explicit = {
       grilling = {
         from = "mattpocock";
         path = "productivity/grilling";
+      };
+      vbtm = {
+        from = "verbatime";
+        path = "vbtm";
       };
     }
     // lib.optionalAttrs isDarwin {
