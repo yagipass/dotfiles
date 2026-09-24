@@ -11,10 +11,12 @@
     extra-substituters = [
       "https://cache.numtide.com"
       "https://zabrze-nix.cachix.org"
+      "https://verbatime.cachix.org"
     ];
     extra-trusted-public-keys = [
       "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
       "zabrze-nix.cachix.org-1:X36vl+otCAj6rchY63NSY16K/xbyiChWm5gVKtaY0Rg="
+      "verbatime.cachix.org-1:Qqie2fyx4q6SYyjWuwmkr78fNAizxW1acBKeiAcHql8="
     ];
     trusted-users = [ username ];
   };

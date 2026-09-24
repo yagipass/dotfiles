@@ -25,6 +25,7 @@
       flake = false;
     };
     zabrze-nix.url = "github:yagipass/zabrze-nix";
+    verbatime.url = "github:yagipass/verbatime";
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -74,6 +75,7 @@
           agentSkillsModule = inputs.agent-skills.homeManagerModules.default;
           llmAgents = inputs'.llm-agents.packages;
           inherit (inputs'.zabrze-nix.packages) zabrze;
+          inherit (inputs'.verbatime.packages) vbtm;
         };
         homeConfiguration = withSystem darwin.system (
           { pkgs, inputs', ... }:
