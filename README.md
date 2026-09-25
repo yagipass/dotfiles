@@ -46,7 +46,7 @@ just gc       # delete old generations and unused store paths
    nix run github:nix-community/home-manager/master -- switch --flake .#default
    ```
 
-4. In 1Password.app, enable "Settings → Developer → Integrate with 1Password CLI", then run `just secrets`.
+4. In 1Password.app, enable "Settings → Developer → Integrate with 1Password CLI" and "Use the SSH agent", then run `just secrets`.
 
 ## NixOS-WSL setup
 
@@ -68,7 +68,13 @@ Assumes NixOS-WSL, 1Password for Windows, and 1Password CLI for Windows are alre
      nixos-rebuild switch --flake .#wsl
    ```
 
-3. Enable CLI integration on the Windows side, then run `just secrets`.
+3. Enable CLI integration and the SSH agent on the Windows side, add the following to `%LOCALAPPDATA%\1Password\config\ssh\agent.toml`, then run `just secrets`.
+
+   ```toml
+   [[ssh-keys]]
+   item = "git-personal-signing-key"
+   vault = "dotfiles"
+   ```
 
 ## License
 

@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  isDarwin,
   ...
 }:
 
@@ -38,10 +39,20 @@
         }
       ];
 
+      signing = {
+        format = "ssh";
+        signer =
+          if isDarwin then
+            "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+          else
+            "${pkgs.writeShellScript "op-ssh-sign" ''exec op-ssh-sign-wsl.exe "$@"''}";
+      };
+
       settings = {
         ghq.root = "~/ghq";
         core.autocrlf = "false";
         merge.conflictStyle = "zdiff3";
+        gpg.ssh.allowedSignersFile = "${config.xdg.configHome}/git/allowed_signers";
       };
     };
 
