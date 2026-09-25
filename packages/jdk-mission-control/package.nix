@@ -39,6 +39,9 @@ stdenvNoCC.mkDerivation {
     ' "$ini" > "$ini.tmp"
     mv "$ini.tmp" "$ini"
 
+    substituteInPlace "$out/Applications/$app/Contents/Eclipse/configuration/config.ini" \
+      --replace-fail "@user.home/.jmc/" "@user.home/.local/share/jmc/"
+
     runHook postInstall
   '';
 

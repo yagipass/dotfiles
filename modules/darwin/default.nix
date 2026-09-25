@@ -1,4 +1,4 @@
-{ username, ... }:
+{ lib, username, ... }:
 
 {
   imports = [ ./homebrew.nix ];
@@ -19,6 +19,7 @@
       "verbatime.cachix.org-1:Qqie2fyx4q6SYyjWuwmkr78fNAizxW1acBKeiAcHql8="
     ];
     trusted-users = [ username ];
+    use-xdg-base-directories = true;
   };
 
   nixpkgs.hostPlatform = "aarch64-darwin";
@@ -27,6 +28,8 @@
     "/opt/homebrew/bin"
     "/opt/homebrew/sbin"
   ];
+
+  environment.profiles = lib.mkOrder 800 [ "$HOME/.local/state/nix/profile" ];
 
   security.pam.services.sudo_local.touchIdAuth = true;
 

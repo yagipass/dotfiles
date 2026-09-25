@@ -1,6 +1,6 @@
 # jdk-mission-control package
 
-Wraps JDK Mission Control, which is not in nixpkgs, from the official macOS/aarch64 binary. The JVM is the Nix `zulu21`. macOS/aarch64 only.
+Wraps JDK Mission Control, which is not in nixpkgs, from the official macOS/aarch64 binary. The JVM is the Nix `zulu21`. The workspace is `~/.local/share/jmc/<version>` instead of `~/.jmc/<version>`. macOS/aarch64 only.
 
 ## Updating the version
 
