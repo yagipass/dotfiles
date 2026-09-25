@@ -23,8 +23,10 @@ let
     ./hunk.nix
     ./java.nix
     ./javascript.nix
+    ./rust.nix
     ./starship.nix
     ./tirith.nix
+    ./vim.nix
     ./zabrze.nix
     ./zoxide.nix
     ./zsh.nix

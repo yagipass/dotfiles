@@ -1,4 +1,4 @@
-_:
+{ config, ... }:
 
 {
   programs.atuin = {
@@ -12,6 +12,7 @@ _:
       search_mode = "fuzzy";
       enter_accept = false;
       secrets_filter = true;
+      logs.dir = "${config.xdg.stateHome}/atuin/logs";
     };
   };
 }

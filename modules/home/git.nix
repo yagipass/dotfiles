@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   ...
 }:
@@ -76,6 +77,7 @@
 
     lazygit = {
       enable = true;
+      enableZshIntegration = false;
       settings = {
         gui = {
           language = "ja";
@@ -89,5 +91,16 @@
         ];
       };
     };
+
+    zsh.initContent = ''
+      lg() {
+        export LAZYGIT_NEW_DIR_FILE="${config.xdg.cacheHome}/lazygit/newdir"
+        command lazygit "$@"
+        if [ -f "$LAZYGIT_NEW_DIR_FILE" ]; then
+          cd "$(cat "$LAZYGIT_NEW_DIR_FILE")"
+          rm -f "$LAZYGIT_NEW_DIR_FILE" > /dev/null
+        fi
+      }
+    '';
   };
 }

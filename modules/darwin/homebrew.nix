@@ -1,3 +1,5 @@
+{ config, ... }:
+
 {
   homebrew = {
     enable = true;
@@ -5,6 +7,7 @@
     onActivation = {
       cleanup = "zap";
       extraFlags = [ "--force-cleanup" ];
+      extraEnv.XDG_CONFIG_HOME = "${config.system.primaryUserHome}/.config";
     };
 
     brews = [

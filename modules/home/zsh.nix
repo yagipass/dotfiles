@@ -96,13 +96,16 @@ in
     history = {
       save = 10000;
       size = 10000;
+      path = "${config.xdg.stateHome}/zsh/history";
     };
 
-    shellAliases = commonAliases;
-
-    envExtra = ''
-      [ -r "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
+    completionInit = ''
+      autoload -U compinit
+      mkdir -p "${config.xdg.cacheHome}/zsh"
+      compinit -d "${config.xdg.cacheHome}/zsh/zcompdump"
     '';
+
+    shellAliases = commonAliases;
 
     initContent = lib.mkMerge [
       (lib.mkBefore ''
@@ -112,8 +115,6 @@ in
       ''
         # Rendered by `just secrets`; may not exist.
         [[ -r "${config.xdg.configHome}/zsh/work.zsh" ]] && source "${config.xdg.configHome}/zsh/work.zsh"
-
-        [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
         ghq-fzf() {
           local dir

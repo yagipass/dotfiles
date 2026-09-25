@@ -1,6 +1,8 @@
 {
+  lib,
   username,
   homeDirectory,
+  isDarwin,
   ...
 }:
 
@@ -12,12 +14,13 @@
     stateVersion = "26.05";
   };
 
-  home.sessionPath = [
+  home.sessionPath = lib.mkBefore [
     "$HOME/.local/bin"
-    "$HOME/.bun/bin"
   ];
 
   xdg.enable = true;
+
+  nix.assumeXdg = isDarwin;
 
   programs.home-manager.enable = true;
 
