@@ -31,7 +31,10 @@
 
   environment.profiles = lib.mkOrder 800 [ "$HOME/.local/state/nix/profile" ];
 
-  security.pam.services.sudo_local.touchIdAuth = true;
+  security.pam.services.sudo_local = {
+    touchIdAuth = true;
+    reattach = true;
+  };
 
   system.defaults = {
     NSGlobalDomain = {
