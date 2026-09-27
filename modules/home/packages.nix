@@ -19,6 +19,7 @@ let
     ./direnv.nix
     ./fzf.nix
     ./git.nix
+    ./go.nix
     ./herdr
     ./hunk.nix
     ./java.nix
