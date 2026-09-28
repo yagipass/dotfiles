@@ -14,25 +14,28 @@ authorized. Merging, force-pushing, and amending are not.
    default branch with
    `gh repo view --json defaultBranchRef --jq .defaultBranchRef.name`.
 2. Commit uncommitted changes with the `commit` skill, passing `branch: true`
-   when on the default branch. Skip this when everything is already committed
-   on a feature branch. Never push to the default branch. If the commits are
-   already on it, ask the user.
+   on the default branch. Never push to the default branch. If the commits
+   are already on it, ask the user.
 3. Run the checks the repository's AGENTS.md requires, unless they already ran
    on this diff.
-4. Write the title and body in English.
-   - Title: the commit subject, or for several commits one Conventional
-     Commits subject that covers them.
+4. Write the title and body in English. The repository's pull request
+   template and contributing guide, including any rules on AI-written text,
+   take precedence over this step.
+   - Title: the commit subject, or one Conventional Commits subject covering
+     all commits.
    - Body: no headings, sized to the change. Keep this order and drop the
      parts that do not apply:
-     1. Why the change was needed.
-     2. What changed, as prose or a short list.
-     3. `Checked:` and `Not checked:` lists. Say what was only evaluated and
-        not built or run.
-     4. Manual steps the change needs after merging.
-     5. `Closes #N`, only for issues named in the conversation.
-5. Push and open the pull request. For a visual change, add
-   `--attach '<file>#<alt text>'` for each real screenshot or recording you
-   have. Do not create media just for the pull request.
+     1. The problem and who it affects.
+     2. What changed.
+     3. Rejected alternatives and known shortcomings.
+     4. `Checked:` and `Not checked:` lists, focused on what you verified by
+        hand. Checks that CI also runs need one line at most.
+     5. Breaking changes and manual steps needed after merging.
+     6. `Closes #N`, only for issues named in the conversation.
+   - The body may become the squash commit message. Keep only what stays true
+     after merging, and put anything else in a comment.
+5. Push and open the pull request. For a visual change, attach each real
+   screenshot or recording with `--attach '<file>#<alt text>'`.
 
    ```sh
    git push -u origin HEAD
