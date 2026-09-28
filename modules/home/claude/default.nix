@@ -10,5 +10,7 @@
       config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/modules/home/claude/statusline.ts";
     ".claude/skills/commit".source =
       config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/modules/home/skills/commit";
+    ".claude/skills/create-pr".source =
+      config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/modules/home/skills/create-pr";
   };
 }
