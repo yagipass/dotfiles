@@ -23,15 +23,16 @@ authorized. Merging, force-pushing, and amending are not.
    take precedence over this step.
    - Title: the commit subject, or one Conventional Commits subject covering
      all commits.
-   - Body: no headings, sized to the change. Keep this order and drop the
-     parts that do not apply:
-     1. The problem and who it affects.
-     2. What changed.
-     3. Rejected alternatives and known shortcomings.
-     4. `Checked:` and `Not checked:` lists, focused on what you verified by
-        hand. Checks that CI also runs need one line at most.
-     5. Breaking changes and manual steps needed after merging.
-     6. `Closes #N`, only for issues named in the conversation.
+   - Body: Markdown sections in this order, sized to the change. Drop the
+     sections that do not apply.
+     1. `## Why`: the problem and who it affects.
+     2. `## What`: what changed.
+     3. `## Trade-offs`: rejected alternatives and known shortcomings.
+     4. `## Verification`: `Checked:` and `Not checked:` lists, focused on
+        what you verified by hand. Checks that CI also runs need one line at
+        most.
+     5. `## After merging`: breaking changes and manual steps.
+     6. A last line `Closes #N`, only for issues named in the conversation.
    - The body may become the squash commit message. Keep only what stays true
      after merging, and put anything else in a comment.
 5. Push and open the pull request. For a visual change, attach each real
