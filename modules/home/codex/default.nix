@@ -15,5 +15,7 @@
       config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/modules/home/skills/commit";
     ".codex/skills/create-pr".source =
       config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/modules/home/skills/create-pr";
+    ".codex/skills/create-issue".source =
+      config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/modules/home/skills/create-issue";
   };
 }
