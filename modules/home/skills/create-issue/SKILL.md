@@ -78,8 +78,9 @@ issue forms:
   form does. Drop optional fields you have nothing for. If a required field
   cannot be filled from the conversation or the repository, ask the user.
   Put the value of a field with `render:` in a code block of that language.
-- Add a `### Checked so far` section right after the reproduction or proposal
-  field, written as in the list below.
+- If the form has no `Checked so far` field, add a `### Checked so far`
+  section right after the reproduction or proposal field. Write either one as
+  in the list below.
 - For a Markdown template, keep its headings.
 
 Without a template, use Markdown sections in this order, sized to the issue,
