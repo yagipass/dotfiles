@@ -12,5 +12,7 @@
       config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/modules/home/skills/commit";
     ".claude/skills/create-pr".source =
       config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/modules/home/skills/create-pr";
+    ".claude/skills/create-issue".source =
+      config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/modules/home/skills/create-issue";
   };
 }
