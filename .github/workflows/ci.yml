@@ -15,8 +15,8 @@ permissions:
 
 env:
   NIX_CONF: |
-    extra-substituters = https://cache.numtide.com https://zabrze-nix.cachix.org https://verbatime.cachix.org
-    extra-trusted-public-keys = niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g= zabrze-nix.cachix.org-1:X36vl+otCAj6rchY63NSY16K/xbyiChWm5gVKtaY0Rg= verbatime.cachix.org-1:Qqie2fyx4q6SYyjWuwmkr78fNAizxW1acBKeiAcHql8=
+    extra-substituters = https://cache.numtide.com https://zabrze-nix.cachix.org https://verbatime.cachix.org https://yagipass.cachix.org
+    extra-trusted-public-keys = niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g= zabrze-nix.cachix.org-1:X36vl+otCAj6rchY63NSY16K/xbyiChWm5gVKtaY0Rg= verbatime.cachix.org-1:Qqie2fyx4q6SYyjWuwmkr78fNAizxW1acBKeiAcHql8= yagipass.cachix.org-1:IDx7B73P4TC7rE854lIYEwy/gd73PV3KE51tIV0vXOc=
 
 jobs:
   check-linux:
@@ -39,6 +39,13 @@ jobs:
       - name: Check flake
         run: nix flake check . --show-trace
 
+      - name: Push to Cachix
+        if: github.ref == 'refs/heads/main'
+        shell: bash
+        env:
+          CACHIX_AUTH_TOKEN: ${{ secrets.CACHIX_AUTH_TOKEN }}
+        run: bash .github/scripts/cachix-paths.sh yagipass | nix run --inputs-from . nixpkgs#cachix -- push yagipass
+
       - name: Root check outputs for the cache
         if: github.ref == 'refs/heads/main'
         run: bash .github/scripts/gc-roots.sh
@@ -55,3 +62,10 @@ jobs:
 
       - name: Check flake
         run: nix flake check . --show-trace
+
+      - name: Push to Cachix
+        if: github.ref == 'refs/heads/main'
+        shell: bash
+        env:
+          CACHIX_AUTH_TOKEN: ${{ secrets.CACHIX_AUTH_TOKEN }}
+        run: bash .github/scripts/cachix-paths.sh yagipass | nix run --inputs-from . nixpkgs#cachix -- push yagipass
