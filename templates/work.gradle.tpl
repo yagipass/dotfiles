@@ -1,3 +1,5 @@
+def workRoot = new File(System.getProperty('user.home'), 'ghq/{{ op://dotfiles/work/git/domain }}').canonicalPath + File.separator
+
 def workMaven = { repos ->
     repos.maven {
         url '{{ op://dotfiles/work/maven/url }}'
@@ -9,6 +11,8 @@ def workMaven = { repos ->
 }
 
 allprojects {
-    workMaven(buildscript.repositories)
-    workMaven(repositories)
+    if ((rootDir.canonicalPath + File.separator).startsWith(workRoot)) {
+        workMaven(buildscript.repositories)
+        workMaven(repositories)
+    }
 }
