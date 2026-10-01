@@ -63,24 +63,30 @@ closing, labelling, and commenting on existing issues are not.
 ## Body
 
 Write in English, as the user filing their own issue, without referring to
-"the user" or "the reporter". State only what was observed, what was run, or
-what the user said, and label a guess as a guess next to the symptom it
-explains. Paste errors and logs verbatim in fenced code blocks, never as
-screenshots, and put long ones in `<details>`. Leave out secrets, tokens, and
-work-internal values, including any in logs and paths. Link related issues
-and pull requests as `#N`.
+"the user" or "the reporter". Describe the problem or request as someone using
+the project sees it: what they did, what happened, and what they want to be
+able to do. Leave out fixes, ways to implement the request, guesses at the
+cause, and the files or functions behind the problem. Those are for whoever
+works on the issue to find. State only what was observed, what was run, or
+what the user said. Paste errors and logs verbatim in fenced code blocks,
+never as screenshots, and put long ones in `<details>`. Leave out secrets,
+tokens, and work-internal values, including any in logs and paths. Link
+related issues and pull requests as `#N`.
 
 With a template, fill it in by hand, since `gh issue create` does not read
 issue forms:
 
-- Follow the instructions in its `markdown` elements and field descriptions.
+- Follow the instructions in its `markdown` elements and field descriptions,
+  except where they ask for a fix or an implementation.
 - Write one `### <label>` section per field, in the form's order, as the web
-  form does. Drop optional fields you have nothing for. If a required field
-  cannot be filled from the conversation or the repository, ask the user.
-  Put the value of a field with `render:` in a code block of that language.
+  form does. Drop optional fields you have nothing for or that ask only for a
+  fix. If a required field cannot be filled from the conversation or the
+  repository, or only with a fix, ask the user. Put the value of a field with
+  `render:` in a code block of that language.
 - If the form has no `Checked so far` field, add a `### Checked so far`
-  section right after the reproduction or proposal field. Write either one as
-  in the list below.
+  section right after the reproduction or proposal field.
+- Write a field that matches a section in the list below, such as the
+  proposal or `Checked so far` field, as that section says.
 - For a Markdown template, keep its headings.
 
 Without a template, use Markdown sections in this order, sized to the issue,
@@ -90,9 +96,10 @@ and drop the ones that do not apply:
    what the user is trying to do and where the current state falls short.
 2. `## How to reproduce`: bugs only. Minimal numbered steps, whether it
    happens every time, and the versions and OS involved.
-3. `## Proposal`: the change wanted, with example usage or code.
-4. `## Alternatives`: what the user does now instead, and rejected options
-   with the reason.
+3. `## Proposal`: the behavior wanted, as someone using the project would see
+   it, with example usage. For docs, what the reader needed to find.
+4. `## Alternatives`: what the user does now instead, and other tools or
+   workflows they tried, with why each falls short.
 5. `## Checked so far`: what the user or you actually ran and what it showed,
    ending with a `Not checked yet:` line. Say so here if nobody has
    reproduced the bug.
