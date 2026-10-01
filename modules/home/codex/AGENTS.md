@@ -23,3 +23,8 @@ These rules apply to all tasks unless explicitly overridden.
 ## Tooling
 
 - Rules that can be checked statically belong in the linter config, not in this file.
+
+## Documentation
+
+- Write READMEs for users, and keep them as short as possible.
+- Do not add comments to source code unless asked.
