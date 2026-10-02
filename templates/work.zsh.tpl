@@ -1,3 +1,4 @@
+export WORK_GIT_DOMAIN='{{ op://dotfiles/work/git/domain }}'
 export WORK_SSH_HOST='{{ op://dotfiles/work/ssh/host }}'
 export WORK_SSH_USER='{{ op://dotfiles/work/ssh/user }}'
 export WORK_ECR_REGISTRY='{{ op://dotfiles/work/aws/ecr-registry }}'
