@@ -32,6 +32,8 @@ in
       };
     };
 
+    pnpm.enable = true;
+
     zsh.initContent = lib.mkAfter ''
       _work_npm_registry() {
         [[ -n "$WORK_NPM_REGISTRY" && -n "$WORK_GIT_DOMAIN" ]] || return 0
@@ -48,6 +50,10 @@ in
       _work_npm_registry
     '';
   };
+
+  xdg.configFile."pnpm/config.yaml".text = ''
+    minimumReleaseAge: ${toString (minReleaseDays * 24 * 60)}
+  '';
 
   home.sessionVariables.BUN_INSTALL = bunInstall;
   home.sessionPath = [ "${bunInstall}/bin" ];
