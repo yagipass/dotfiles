@@ -51,6 +51,7 @@
       settings = {
         ghq.root = "~/ghq";
         core.autocrlf = "false";
+        init.defaultBranch = "main";
         merge.conflictStyle = "zdiff3";
         gpg.ssh.allowedSignersFile = "${config.xdg.configHome}/git/allowed_signers";
       };
