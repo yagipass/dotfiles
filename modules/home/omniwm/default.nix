@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  config,
+  pkgs,
+  dotfilesPath,
+  ...
+}:
 
 let
   version = "0.6.8";
@@ -14,6 +19,10 @@ in
   programs.omniwm = {
     enable = true;
     package = omniwm;
-    settings = ./settings.toml;
+  };
+
+  xdg.configFile."omniwm/settings.toml" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/modules/home/omniwm/settings.toml";
+    force = true;
   };
 }
