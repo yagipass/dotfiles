@@ -3,6 +3,7 @@
   pkgs,
   llmAgents,
   vbtm,
+  ajmx,
   isDarwin,
   ...
 }:
@@ -65,6 +66,7 @@ in
     ++ [
       llmAgents.ccusage
       vbtm
+      ajmx
     ]
     ++ lib.optionals isDarwin [
       nodePackages.chrome-devtools-mcp
