@@ -53,6 +53,7 @@
         core.autocrlf = "false";
         init.defaultBranch = "main";
         merge.conflictStyle = "zdiff3";
+        rerere.enabled = true;
         gpg.ssh.allowedSignersFile = "${config.xdg.configHome}/git/allowed_signers";
       };
     };
@@ -75,6 +76,7 @@
       };
       extensions = [
         pkgs.gh-poi
+        pkgs.gh-stack
       ];
     };
 
