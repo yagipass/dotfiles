@@ -1,42 +1,52 @@
 ---
 name: create-pr
-description: Commit the current change, push it, and open a pull request. Use this whenever the user asks to create or open a PR, "open a PR", or "push this and make a PR".
+description: Commit the current change, push it, and open a pull request, or a stack of them when the change has dependent parts. Use this whenever the user asks to create or open a PR, "open a PR", or "push this and make a PR".
 ---
 
 # Create PR
 
-Creating a branch, committing, pushing, and opening a pull request are
-authorized. Merging, force-pushing, and amending are not.
+Creating branches, committing, pushing, and opening pull requests are
+authorized, as are the `--force-with-lease` pushes `gh stack` makes. Merging,
+amending, and other force-pushes are not.
 
 ## Workflow
 
-1. Run `git status --short` and `git branch --show-current`, and get the
-   default branch with
-   `gh repo view --json defaultBranchRef --jq .defaultBranchRef.name`.
-2. Commit uncommitted changes with the `commit` skill, passing `branch: true`
-   on the default branch. Never push to the default branch. If the commits
-   are already on it, ask the user.
+1. Run `git status --short`, `git branch --show-current`,
+   `gh repo view --json defaultBranchRef --jq .defaultBranchRef.name`, and
+   `gh stack view --json` (exit 0: on a stack, exit 2: not). Use the
+   `gh-stack` skill for `gh stack` commands.
+2. Commit uncommitted changes with the `commit` skill. Never push to the
+   default branch. If the commits are already on it, ask the user.
+   - On a stack, commit each change on the layer that owns it.
+   - If the changes hold dependent concerns that are each reviewable alone
+     and `gh api 'repos/{owner}/{repo}/stacks' --silent` succeeds, propose
+     the layers bottom to top with their files and commit subjects. If the
+     user accepts, run `gh stack init` with the first layer's name on the
+     default branch, or with the current branch elsewhere, then `gh stack add`
+     for each later layer. Name branches as the `commit` skill does, and
+     commit only each layer's files on it.
+   - Otherwise, pass `branch: true` on the default branch.
 3. Run the checks the repository's AGENTS.md requires, unless they already ran
-   on this diff.
-4. Write the title and body in English. The repository's pull request
-   template and contributing guide, including any rules on AI-written text,
-   take precedence over this step.
+   on this diff. On a stack, run them on each new or changed layer.
+4. Write each new pull request's title and body in English, covering only its
+   layer on a stack. The repository's pull request template and contributing
+   guide, including rules on AI-written text, take precedence.
    - Title: the commit subject, or one Conventional Commits subject covering
      all commits.
-   - Body: Markdown sections in this order, sized to the change. Drop the
-     sections that do not apply.
+   - Body: these Markdown sections in order, sized to the change. Drop those
+     that do not apply.
      1. `## Why`: the problem and who it affects.
      2. `## What`: what changed.
      3. `## Trade-offs`: rejected alternatives and known shortcomings.
-     4. `## Verification`: `Checked:` and `Not checked:` lists, focused on
-        what you verified by hand. Checks that CI also runs need one line at
-        most.
+     4. `## Verification`: `Checked:` and `Not checked:` lists of what you
+        verified by hand. Checks CI also runs get one line at most.
      5. `## After merging`: breaking changes and manual steps.
      6. A last line `Closes #N`, only for issues named in the conversation.
    - The body may become the squash commit message. Keep only what stays true
-     after merging, and put anything else in a comment.
-5. Push and open the pull request. For a visual change, attach each real
-   screenshot or recording with `--attach '<file>#<alt text>'`.
+     after merging, and put the rest in a comment.
+5. Push and open the pull request. Attach real screenshots or recordings of a
+   visual change with `--attach '<file>#<alt text>'`. If the branch already
+   has an open pull request, only push.
 
    ```sh
    git push -u origin HEAD
@@ -45,7 +55,17 @@ authorized. Merging, force-pushing, and amending are not.
    BODY
    ```
 
-   If the branch already has an open pull request, push and skip
-   `gh pr create`.
+   On a stack, submit every layer, then set the title and body of each pull
+   request `submit` created. Their numbers are in `branches[].pr.number` of
+   `gh stack view --json`.
 
-6. Report the pull request URL. Do not wait for CI.
+   ```sh
+   gh stack submit --auto --open --remote origin
+   gh pr edit 123 --title "feat(scope): add something useful" --body-file - <<'BODY'
+   ...
+   BODY
+   ```
+
+   If a repository rule rejects a push, stop and report it.
+
+6. Report every pull request URL. Do not wait for CI.
