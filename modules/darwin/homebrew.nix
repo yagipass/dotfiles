@@ -24,6 +24,7 @@
       "eclipse-rcp"
       "ghostty"
       "google-chrome"
+      "google-chrome@beta"
       "intune-company-portal"
       "karabiner-elements"
       "microsoft-office-businesspro"

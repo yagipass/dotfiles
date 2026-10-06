@@ -13,6 +13,7 @@ let
       npmDepsHash,
       description,
       homepage,
+      extraPostPatch ? "",
     }:
     buildNpmPackage {
       inherit pname version npmDepsHash;
@@ -25,7 +26,8 @@ let
       postPatch = ''
         cp ${./${pname}/package-lock.json} package-lock.json
         mkdir -p node_modules
-      '';
+      ''
+      + extraPostPatch;
 
       dontNpmBuild = true;
 
@@ -45,5 +47,9 @@ in
     npmDepsHash = "sha256-nH9eYyn37PMq2yS9PW/r1ob5zfzdRRfZHJuov0kXGF4=";
     description = "Chrome DevTools MCP server and CLI";
     homepage = "https://github.com/ChromeDevTools/chrome-devtools-mcp";
+    extraPostPatch = ''
+      substituteInPlace build/src/config/mcp-options.js \
+        --replace-fail "args.channel = 'stable';" "args.channel = args.autoConnect ? 'stable' : 'beta';"
+    '';
   };
 }
