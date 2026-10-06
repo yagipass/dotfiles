@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   agentSkillsModule,
   isDarwin,
   ...
@@ -24,6 +25,10 @@
         input = "verbatime";
         subdir = "skills";
       };
+      gh-stack = {
+        path = pkgs.gh-stack.src;
+        subdir = "skills";
+      };
     };
 
     skills.explicit = {
@@ -34,6 +39,10 @@
       vbtm = {
         from = "verbatime";
         path = "vbtm";
+      };
+      gh-stack = {
+        from = "gh-stack";
+        path = "gh-stack";
       };
     }
     // lib.optionalAttrs isDarwin {
