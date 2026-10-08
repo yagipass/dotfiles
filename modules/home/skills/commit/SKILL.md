@@ -68,6 +68,7 @@ One optional argument, `branch`, as `true` or `false`. Anything else means
 - Body: required. Explain why the change was needed and what changed at a high
   level, wrapped at 72 columns. Do not restate the subject or list files.
 - Footer: `BREAKING CHANGE:` with `!` after the type or scope when applicable.
-  Do not invent issue or PR references. Add trailers only when the user or the
-  tool requires them.
+  Do not invent issue or PR references. Do not link to other repositories or
+  reference anything in them, such as `owner/repo#N`, `owner/repo@sha`, or
+  their URLs. Add trailers only when the user or the tool requires them.
 - Everything in English, whatever language the conversation uses.

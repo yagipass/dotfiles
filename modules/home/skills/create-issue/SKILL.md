@@ -71,7 +71,9 @@ works on the issue to find. State only what was observed, what was run, or
 what the user said. Paste errors and logs verbatim in fenced code blocks,
 never as screenshots, and put long ones in `<details>`. Leave out secrets,
 tokens, and work-internal values, including any in logs and paths. Link
-related issues and pull requests as `#N`.
+related issues and pull requests in this repository as `#N`. Do not link to
+other repositories or reference anything in them, such as `owner/repo#N`,
+`owner/repo@sha`, or their URLs.
 
 With a template, fill it in by hand, since `gh issue create` does not read
 issue forms:

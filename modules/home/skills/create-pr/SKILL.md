@@ -42,6 +42,9 @@ amending, and other force-pushes are not.
         verified by hand. Checks CI also runs get one line at most.
      5. `## After merging`: breaking changes and manual steps.
      6. A last line `Closes #N`, only for issues named in the conversation.
+   - Refer to issues and pull requests in this repository only, as `#N`. Do
+     not link to other repositories or reference anything in them, such as
+     `owner/repo#N`, `owner/repo@sha`, or their URLs.
    - The body may become the squash commit message. Keep only what stays true
      after merging, and put the rest in a comment.
 5. Push and open the pull request. Attach real screenshots or recordings of a
