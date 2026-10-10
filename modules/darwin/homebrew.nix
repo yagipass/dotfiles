@@ -19,7 +19,6 @@
       "beyond-compare"
       "claude"
       "codex-app"
-      "copilot-cli"
       "docker-desktop"
       "eclipse-rcp"
       "ghostty"
