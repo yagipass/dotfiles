@@ -1,5 +1,8 @@
 onboarding = false
 
+[keys]
+focus_agent = "prefix+alt+1..9"
+
 [[keys.command]]
 key = "prefix+t"
 type = "popup"
