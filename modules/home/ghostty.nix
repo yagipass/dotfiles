@@ -25,6 +25,15 @@ _:
         "cmd+shift+left=text:\\x02p"
         "cmd+shift+right=text:\\x02n"
         "cmd+w=text:\\x02w"
+        "cmd+digit_1=text:\\x02\\x1b1"
+        "cmd+digit_2=text:\\x02\\x1b2"
+        "cmd+digit_3=text:\\x02\\x1b3"
+        "cmd+digit_4=text:\\x02\\x1b4"
+        "cmd+digit_5=text:\\x02\\x1b5"
+        "cmd+digit_6=text:\\x02\\x1b6"
+        "cmd+digit_7=text:\\x02\\x1b7"
+        "cmd+digit_8=text:\\x02\\x1b8"
+        "cmd+digit_9=text:\\x02\\x1b9"
       ];
     };
   };
