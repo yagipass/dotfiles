@@ -27,14 +27,11 @@ One optional argument, `branch`, as `true` or `false`. Anything else means
    staged, stage the files that belong to this change. Leave out unrelated,
    generated, or sensitive files such as `.env` and credentials, and say what
    you left out.
-2. Binary files go through git-lfs. Before staging one, confirm that
-   `git check-attr filter <file>` prints `lfs`. Otherwise run
-   `git lfs track '<pattern>'` and stage `.gitattributes` too.
-3. Run `git log --oneline -30` and reuse the types and scopes already in use.
-4. Write the message. If the staged diff mixes unrelated changes, propose
+2. Run `git log --oneline -30` and reuse the types and scopes already in use.
+3. Write the message. If the staged diff mixes unrelated changes, propose
    splitting it into several commits.
-5. If `branch` is `true`, create the branch now.
-6. Commit with a heredoc so the body survives shell quoting:
+4. If `branch` is `true`, create the branch now.
+5. Commit with a heredoc so the body survives shell quoting:
 
    ```sh
    git commit -m "$(cat <<'MSG'
@@ -45,7 +42,7 @@ One optional argument, `branch`, as `true` or `false`. Anything else means
    )"
    ```
 
-7. Run `git log -1 --stat` and report the branch, subject, and body. If a
+6. Run `git log -1 --stat` and report the branch, subject, and body. If a
    pre-commit hook fails, report the cause and stop. Do not retry, fix, or
    bypass it.
 
