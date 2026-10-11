@@ -143,4 +143,4 @@ secrets:
 
 # Delete old Nix generations and unused store paths.
 gc:
-  nh clean all
+  nh clean all --keep-one

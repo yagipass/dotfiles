@@ -50,7 +50,7 @@
       clean = {
         enable = true;
         dates = "weekly";
-        extraArgs = "--keep-since 30d";
+        extraArgs = "--keep-one";
       };
     };
 
