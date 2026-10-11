@@ -1,7 +1,10 @@
 { lib, username, ... }:
 
 {
-  imports = [ ./homebrew.nix ];
+  imports = [
+    ./homebrew.nix
+    ./nh.nix
+  ];
 
   nix.settings = {
     experimental-features = [
