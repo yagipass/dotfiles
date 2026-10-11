@@ -127,7 +127,7 @@ animationDuration = 0.2
 autoHide = false
 backgroundBlurRadius = 0
 backgroundEffect = "standardBlur"
-enabled = true
+enabled = false
 heightPercent = 50.0
 monitorMode = "focusedWindow"
 opacity = 1.0
@@ -990,7 +990,7 @@ binding = "Unassigned"
 id = "toggleHiddenBarPanel"
 
 [[hotkeys]]
-binding = "Option+Grave"
+binding = "Unassigned"
 id = "toggleQuakeTerminal"
 
 [[hotkeys]]
