@@ -18,7 +18,6 @@
       "adobe-acrobat-reader"
       "android-studio"
       "beyond-compare"
-      "claude"
       "codex-app"
       "docker-desktop"
       "eclipse-rcp"
