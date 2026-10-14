@@ -539,6 +539,26 @@
         "type": "github"
       }
     },
+    "omniwm": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1791435969,
+        "narHash": "sha256-BcqHXIGb6Lq0X/Yh8ujQs1eVaoiMCabIg5korPyBjlc=",
+        "owner": "mst-mkt",
+        "repo": "omniwm.nix",
+        "rev": "84974635e841f74cff825b39d608e51f1d034fbb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mst-mkt",
+        "repo": "omniwm.nix",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "agent-skills": "agent-skills",
@@ -552,6 +572,7 @@
         "nix-darwin": "nix-darwin",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_3",
+        "omniwm": "omniwm",
         "treefmt-nix": "treefmt-nix_3",
         "verbatime": "verbatime",
         "zabrze-nix": "zabrze-nix"
