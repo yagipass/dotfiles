@@ -27,6 +27,10 @@
     zabrze-nix.url = "github:yagipass/zabrze-nix";
     verbatime.url = "github:yagipass/verbatime";
     ajmx.url = "github:yagipass/ajmx";
+    omniwm = {
+      url = "github:mst-mkt/omniwm.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -74,6 +78,8 @@
           # The agent-skills module resolves sources.<name>.input from args.inputs.
           inherit inputs;
           agentSkillsModule = inputs.agent-skills.homeManagerModules.default;
+          omniwmModule = inputs.omniwm.homeManagerModules.default;
+          omniwmLib = inputs.omniwm.lib;
           llmAgents = inputs'.llm-agents.packages;
           inherit (inputs'.zabrze-nix.packages) zabrze;
           inherit (inputs'.verbatime.packages) vbtm;
