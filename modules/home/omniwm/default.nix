@@ -11,11 +11,44 @@
     enable = true;
     launchd.keepAlive = true;
 
+    preserveSettings = [
+      "monitorBarOverrides"
+      "monitorDwindleOverrides"
+      "monitorGapOverrides"
+      "monitorNiriOverrides"
+      "monitorOrientationOverrides"
+      "routing"
+    ];
+
     settings = {
       focus.followsWindowToMonitor = true;
-      general.updateChecksEnabled = false;
+      general = {
+        preventSleepEnabled = true;
+        updateChecksEnabled = false;
+      };
       quakeTerminal.enabled = false;
-      workspaceBar.reserveLayoutSpace = true;
+      workspaceBar = {
+        hideInNativeFullscreen = true;
+        reserveLayoutSpace = true;
+      };
+
+      workspaces = omniwmLib.workspaces [
+        { }
+        { }
+        { }
+        { }
+        { }
+        {
+          displayName = "❤️";
+          monitorAssignment.type = "secondary";
+        }
+        {
+          displayName = "🚀";
+          monitorAssignment.type = "secondary";
+        }
+        { monitorAssignment.type = "secondary"; }
+        { monitorAssignment.type = "secondary"; }
+      ];
 
       appRules = [
         (omniwmLib.appRule "com.openai.codex" {
