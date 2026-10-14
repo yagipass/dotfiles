@@ -16,6 +16,7 @@
     casks = [
       "1password"
       "adobe-acrobat-reader"
+      "android-studio"
       "beyond-compare"
       "claude"
       "codex-app"
