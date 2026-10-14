@@ -254,11 +254,11 @@ id = "D8D0E070-7FCC-4FFE-8F56-288FA96EB857"
 layout = "float"
 
 [[hotkeys]]
-binding = "Unassigned"
+binding = "Option+S"
 id = "toggleScratchpad.1"
 
 [[hotkeys]]
-binding = "Unassigned"
+binding = "Option+Shift+S"
 id = "assignFocusedWindowToScratchpad.1"
 
 [[hotkeys]]
