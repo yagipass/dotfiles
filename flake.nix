@@ -154,11 +154,7 @@
                 excludes = [ "^\\.envrc$" ];
               };
               typos.enable = true;
-              gitleaks = {
-                enable = true;
-                entry = "${pkgs.gitleaks}/bin/gitleaks git --pre-commit --staged --redact --no-banner";
-                pass_filenames = false;
-              };
+              gitleaks.enable = true;
             };
 
             packages = {
