@@ -1,0 +1,55 @@
+name: Watch nixpkgs
+
+on:
+  schedule:
+    - cron: "0 0 * * 1"
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: nixbuild/nix-quick-install-action@9f63be77f412a248c9d9a65a4c82cf066cdf8f0c # v35
+
+      - name: Open an issue for each local package that landed in nixpkgs-unstable
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+
+          rev=$(nix flake metadata --json github:nixos/nixpkgs/nixpkgs-unstable | jq -r .locked.rev)
+
+          # shellcheck disable=SC2016
+          found=$(nix eval --json "github:nixos/nixpkgs/$rev#legacyPackages" --apply '
+            lp:
+            let
+              names = [ "gh-actions-lock" "chrome-devtools-mcp" "jdk-mission-control" ];
+              systems = [ "aarch64-darwin" "x86_64-linux" ];
+              availableOn =
+                name: system:
+                let
+                  pkgs = lp.${system};
+                  result = builtins.tryEval (pkgs.lib.meta.availableOn pkgs.stdenv.hostPlatform pkgs.${name});
+                in
+                pkgs ? ${name} && result.success && result.value;
+            in
+            map (name: { inherit name; version = lp.x86_64-linux.${name}.version or "unknown"; }) (
+              builtins.filter (name: builtins.all (availableOn name) systems) names
+            )
+          ')
+
+          existing=$(gh issue list --state all --label automated --limit 1000 --json title --jq '.[].title')
+
+          jq -r '.[] | [.name, .version] | @tsv' <<<"$found" | while IFS=$'\t' read -r name version; do
+            title="chore: use $name from nixpkgs"
+            if grep -Fxq "$title" <<<"$existing"; then
+              echo "skip: $title"
+              continue
+            fi
+            gh issue create --title "$title" --label automated --body "\`$name\` $version is now available on aarch64-darwin and x86_64-linux in nixpkgs-unstable ([\`${rev:0:7}\`](https://github.com/NixOS/nixpkgs/commit/$rev)). Replace the local package under \`packages/\` with \`pkgs.$name\`."
+          done
