@@ -21,7 +21,7 @@ update:
   @just update-{{host}}
 
 # Update every input regardless of host (used by CI).
-update-all: update-flake _update-node-packages _update-jmc fmt
+update-all: update-flake _update-node-packages _update-jmc _update-gh-actions-lock fmt
 
 # Update flake.lock only.
 update-flake:
@@ -32,6 +32,9 @@ update-node-packages: _update-node-packages fmt lint
 
 # Update Nix-wrapped JDK Mission Control.
 update-jmc: _update-jmc fmt lint
+
+# Update Nix-wrapped gh-actions-lock.
+update-gh-actions-lock: _update-gh-actions-lock fmt lint
 
 [private]
 update-macos: _update-node-packages update-flake fmt lint
@@ -53,6 +56,10 @@ _update-node-packages:
 [working-directory("packages/jdk-mission-control")]
 _update-jmc:
   bun run update.ts
+
+[private]
+_update-gh-actions-lock:
+  nix-update --flake gh-actions-lock --use-github-releases --version-regex '^v([0-9.]+)$'
 
 # Format the repository.
 fmt:
