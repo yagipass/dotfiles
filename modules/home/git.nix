@@ -77,6 +77,7 @@
       extensions = [
         pkgs.gh-poi
         pkgs.gh-stack
+        (pkgs.callPackage ../../packages/gh-actions-lock/package.nix { })
       ];
     };
 
