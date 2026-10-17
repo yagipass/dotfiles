@@ -28,7 +28,7 @@ jobs:
           found=$(nix eval --json "github:nixos/nixpkgs/$rev#legacyPackages" --apply '
             lp:
             let
-              names = [ "gh-actions-lock" "chrome-devtools-mcp" "jdk-mission-control" ];
+              names = [ "gh-actions-lock" "jactionlint" "chrome-devtools-mcp" "jdk-mission-control" ];
               systems = [ "aarch64-darwin" "x86_64-linux" ];
               availableOn =
                 name: system:

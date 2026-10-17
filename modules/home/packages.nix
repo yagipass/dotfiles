@@ -67,6 +67,7 @@ in
       llmAgents.ccusage
       vbtm
       ajmx
+      (pkgs.callPackage ../../packages/jactionlint/package.nix { })
     ]
     ++ lib.optionals isDarwin [
       nodePackages.chrome-devtools-mcp
