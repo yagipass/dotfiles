@@ -19,7 +19,8 @@
       "Bash(pnpm dlx:*)",
       "Bash(yarn dlx:*)",
       "Bash(uvx:*)",
-      "Bash(pipx run:*)"
+      "Bash(pipx run:*)",
+      "Bash(gh infra apply:*)"
     ]
   },
   "model": "opus",
