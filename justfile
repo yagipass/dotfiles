@@ -21,7 +21,7 @@ update:
   @just update-{{host}}
 
 # Update every input regardless of host (used by CI).
-update-all: update-flake _update-node-packages _update-jmc _update-gh-actions-lock _update-jactionlint fmt
+update-all: update-flake _update-node-packages _update-jmc _update-gh-actions-lock _update-jactionlint _update-gh-infra fmt
 
 # Update flake.lock only.
 update-flake:
@@ -38,6 +38,9 @@ update-gh-actions-lock: _update-gh-actions-lock fmt lint
 
 # Update Nix-wrapped jactionlint.
 update-jactionlint: _update-jactionlint fmt lint
+
+# Update Nix-wrapped gh-infra.
+update-gh-infra: _update-gh-infra fmt lint
 
 [private]
 update-macos: _update-node-packages update-flake fmt lint
@@ -67,6 +70,10 @@ _update-gh-actions-lock:
 [private]
 _update-jactionlint:
   nix-update --flake jactionlint --use-github-releases --version-regex '^v([0-9.]+)$'
+
+[private]
+_update-gh-infra:
+  nix-update --flake gh-infra --use-github-releases --version-regex '^v([0-9.]+)$'
 
 # Format the repository.
 fmt:
