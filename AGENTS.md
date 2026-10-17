@@ -33,3 +33,7 @@ Never run any `switch` command without an explicit request from the user. Change
 - From Nix, use runtime-generated files, includes, sourcing, or `WORK_*` environment variables. Evaluation and `switch` must succeed even when the generated files are absent.
 - When changing a template or item schema, keep the README and every `op://` reference in sync.
 - Never run `just secrets` without an explicit request from the user.
+
+## GitHub settings
+
+Repository settings live in `.github/infra.yml`. Check changes with `gh infra plan .github/infra.yml`. Never run `gh infra apply`.
