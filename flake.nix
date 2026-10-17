@@ -172,6 +172,7 @@
                 pkgs.bun
                 pkgs.nodejs
                 pkgs.nix-update
+                pkgs.nix-init
               ]
               ++ config.pre-commit.settings.enabledPackages;
               shellHook = config.pre-commit.installationScript;
