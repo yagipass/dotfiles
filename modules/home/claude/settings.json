@@ -9,6 +9,7 @@
       "Read(.env)",
       "Read(*.env)",
       "Read(.env.*)",
+      "Read(secrets.properties)",
       "Bash(cat *.env*)",
       "Bash(grep *.env*)",
       "Bash(npx:*)",
