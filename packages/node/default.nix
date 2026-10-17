@@ -42,14 +42,14 @@ in
 {
   chrome-devtools-mcp = mkNpmPackage {
     pname = "chrome-devtools-mcp";
-    version = "1.10.1";
-    hash = "sha256-uFu8/2L0JySGGP+1X5+rT0QyfCq28OMLnhDF4jyLEAY=";
-    npmDepsHash = "sha256-nH9eYyn37PMq2yS9PW/r1ob5zfzdRRfZHJuov0kXGF4=";
+    version = "1.11.0";
+    hash = "sha256-L67t60i3zUKlZmn6uh9SlJh2B2nC+iQIjvIlUD6ox1k=";
+    npmDepsHash = "sha256-iyp3oJHI8I4XUsidr/tFqJPqG6k4BChh+5D8XRTkwtE=";
     description = "Chrome DevTools MCP server and CLI";
     homepage = "https://github.com/ChromeDevTools/chrome-devtools-mcp";
     extraPostPatch = ''
-      substituteInPlace build/src/config/mcp-options.js \
-        --replace-fail "args.channel = 'stable';" "args.channel = args.autoConnect ? 'stable' : 'beta';"
+      substituteInPlace build/src/config/ConfigParser.js \
+        --replace-fail "resolvedArgs[key] = option.default;" "resolvedArgs[key] = key === 'channel' && !resolvedArgs.autoConnect ? 'beta' : option.default;"
     '';
   };
 }
