@@ -161,6 +161,7 @@
               inherit (inputs'.zabrze-nix.packages) zabrze;
               gh-actions-lock = pkgs.callPackage ./packages/gh-actions-lock/package.nix { };
               jactionlint = pkgs.callPackage ./packages/jactionlint/package.nix { };
+              gh-infra = pkgs.callPackage ./packages/gh-infra/package.nix { };
             }
             // lib.optionalAttrs (system == darwin.system) {
               inherit (import ./packages/node { inherit pkgs; }) chrome-devtools-mcp;
@@ -188,7 +189,12 @@
                     gitleaks dir ${inputs.self} --no-banner --redact
                     touch $out
                   '';
-              inherit (self'.packages) zabrze gh-actions-lock jactionlint;
+              inherit (self'.packages)
+                zabrze
+                gh-actions-lock
+                jactionlint
+                gh-infra
+                ;
             }
             // lib.optionalAttrs (system == darwin.system) {
               inherit (self'.packages) chrome-devtools-mcp;
