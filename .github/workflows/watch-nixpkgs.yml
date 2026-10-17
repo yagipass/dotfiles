@@ -5,13 +5,14 @@ on:
     - cron: "0 0 * * 1"
   workflow_dispatch:
 
-permissions:
-  issues: write
+permissions: {}
 
 jobs:
   watch:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    permissions:
+      issues: write
     steps:
       - uses: nixbuild/nix-quick-install-action@9f63be77f412a248c9d9a65a4c82cf066cdf8f0c # v35
 
