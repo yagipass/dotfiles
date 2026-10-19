@@ -28,6 +28,7 @@
       "karabiner-elements"
       "microsoft-office-businesspro"
       "obsidian"
+      "slack"
       "stats"
       "tailscale-app"
       "visual-studio-code"
