@@ -11,7 +11,7 @@ _:
       macos-titlebar-style = "transparent";
       macos-window-shadow = true;
       copy-on-select = true;
-      clipboard-read = "allow";
+      clipboard-read = "deny";
       clipboard-write = "allow";
 
       keybind = [
