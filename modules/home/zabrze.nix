@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  zabrze,
   ...
 }:
 
@@ -16,8 +15,8 @@ in
 
     package = lib.mkOption {
       type = lib.types.package;
-      default = zabrze;
-      defaultText = lib.literalExpression "zabrze # zabrze-nix flake input";
+      default = pkgs.callPackage ../../packages/zabrze/package.nix { };
+      defaultText = lib.literalExpression "pkgs.callPackage ../../packages/zabrze/package.nix { }";
       description = "The zabrze package to use.";
     };
 
