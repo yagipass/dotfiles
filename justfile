@@ -21,7 +21,7 @@ update:
   @just update-{{host}}
 
 # Update every input regardless of host (used by CI).
-update-all: update-flake _update-node-packages _update-jmc _update-gh-actions-lock _update-jactionlint _update-gh-infra _update-redmine-cli fmt
+update-all: update-flake _update-node-packages _update-jmc _update-gh-actions-lock _update-jactionlint _update-gh-infra _update-redmine-cli _update-zabrze fmt
 
 # Update flake.lock only.
 update-flake:
@@ -44,6 +44,9 @@ update-gh-infra: _update-gh-infra fmt lint
 
 # Update Nix-wrapped redmine-cli.
 update-redmine-cli: _update-redmine-cli fmt lint
+
+# Update Nix-wrapped zabrze.
+update-zabrze: _update-zabrze fmt lint
 
 [private]
 update-macos: _update-node-packages update-flake fmt lint
@@ -81,6 +84,10 @@ _update-gh-infra:
 [private]
 _update-redmine-cli:
   nix-update --flake redmine-cli --use-github-releases --version-regex '^v([0-9.]+)$'
+
+[private]
+_update-zabrze:
+  nix-update --flake zabrze --use-github-releases --version-regex '^v([0-9.]+)$'
 
 # Format the repository.
 fmt:

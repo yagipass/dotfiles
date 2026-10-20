@@ -24,7 +24,6 @@
       url = "github:ChromeDevTools/chrome-devtools-mcp";
       flake = false;
     };
-    zabrze-nix.url = "github:yagipass/zabrze-nix";
     verbatime.url = "github:yagipass/verbatime";
     ajmx.url = "github:yagipass/ajmx";
     omniwm = {
@@ -81,7 +80,6 @@
           omniwmModule = inputs.omniwm.homeManagerModules.default;
           omniwmLib = inputs.omniwm.lib;
           llmAgents = inputs'.llm-agents.packages;
-          inherit (inputs'.zabrze-nix.packages) zabrze;
           inherit (inputs'.verbatime.packages) vbtm;
           inherit (inputs'.ajmx.packages) ajmx;
         };
@@ -132,7 +130,6 @@
         perSystem =
           {
             self',
-            inputs',
             config,
             pkgs,
             system,
@@ -158,7 +155,7 @@
             };
 
             packages = {
-              inherit (inputs'.zabrze-nix.packages) zabrze;
+              zabrze = pkgs.callPackage ./packages/zabrze/package.nix { };
               gh-actions-lock = pkgs.callPackage ./packages/gh-actions-lock/package.nix { };
               jactionlint = pkgs.callPackage ./packages/jactionlint/package.nix { };
               gh-infra = pkgs.callPackage ./packages/gh-infra/package.nix { };
