@@ -27,7 +27,6 @@ let
     ./javascript.nix
     ./rust.nix
     ./starship.nix
-    ./tirith.nix
     ./vim.nix
     ./zabrze.nix
     ./zoxide.nix
