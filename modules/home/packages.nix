@@ -68,6 +68,7 @@ in
       vbtm
       ajmx
       (pkgs.callPackage ../../packages/jactionlint/package.nix { })
+      (pkgs.callPackage ../../packages/redmine-cli/package.nix { })
     ]
     ++ lib.optionals isDarwin [
       nodePackages.chrome-devtools-mcp
