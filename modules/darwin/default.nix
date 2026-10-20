@@ -23,7 +23,6 @@
       "ajmx.cachix.org-1:GIHBWC7DAYdQHwsuTKF6ouPF0ziSXtxRcktMOr4xXMk="
       "yagipass.cachix.org-1:IDx7B73P4TC7rE854lIYEwy/gd73PV3KE51tIV0vXOc="
     ];
-    trusted-users = [ username ];
     use-xdg-base-directories = true;
   };
 
