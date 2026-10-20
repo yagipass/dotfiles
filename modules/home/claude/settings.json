@@ -46,7 +46,6 @@
     "command": "~/.claude/statusline.ts"
   },
   "enabledPlugins": {
-    "codex@openai-codex": true,
     "ast-grep@ast-grep-marketplace": true
   },
   "extraKnownMarketplaces": {
@@ -54,12 +53,6 @@
       "source": {
         "source": "github",
         "repo": "anthropics/skills"
-      }
-    },
-    "openai-codex": {
-      "source": {
-        "source": "github",
-        "repo": "openai/codex-plugin-cc"
       }
     },
     "ast-grep-marketplace": {
