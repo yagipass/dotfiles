@@ -51,7 +51,7 @@ in
       ffmpeg
       jq
       nkf
-      p7zip
+      _7zz
       ripgrep
       eza
       bat
