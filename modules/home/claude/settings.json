@@ -21,6 +21,22 @@
       "Bash(uvx:*)",
       "Bash(pipx run:*)",
       "Bash(gh infra apply:*)"
+    ],
+    "ask": [
+      "Bash(just secrets:*)",
+      "Bash(just switch:*)",
+      "Bash(just switch-home:*)",
+      "Bash(just switch-darwin:*)",
+      "Bash(just switch-macos:*)",
+      "Bash(just switch-wsl:*)",
+      "Bash(nh home switch:*)",
+      "Bash(nh darwin switch:*)",
+      "Bash(nh os switch:*)",
+      "Bash(home-manager switch:*)",
+      "Bash(darwin-rebuild switch:*)",
+      "Bash(sudo darwin-rebuild switch:*)",
+      "Bash(nixos-rebuild switch:*)",
+      "Bash(sudo nixos-rebuild switch:*)"
     ]
   },
   "model": "opus",
