@@ -162,6 +162,7 @@
               gh-actions-lock = pkgs.callPackage ./packages/gh-actions-lock/package.nix { };
               jactionlint = pkgs.callPackage ./packages/jactionlint/package.nix { };
               gh-infra = pkgs.callPackage ./packages/gh-infra/package.nix { };
+              redmine-cli = pkgs.callPackage ./packages/redmine-cli/package.nix { };
             }
             // lib.optionalAttrs (system == darwin.system) {
               inherit (import ./packages/node { inherit pkgs; }) chrome-devtools-mcp;
@@ -194,6 +195,7 @@
                 gh-actions-lock
                 jactionlint
                 gh-infra
+                redmine-cli
                 ;
             }
             // lib.optionalAttrs (system == darwin.system) {
