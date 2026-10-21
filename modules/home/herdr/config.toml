@@ -1,5 +1,9 @@
 onboarding = false
 
+[update]
+version_check = false
+manifest_check = false
+
 [keys]
 focus_agent = "prefix+alt+1..9"
 
