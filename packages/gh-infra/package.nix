@@ -7,14 +7,14 @@
 
 buildGoModule (finalAttrs: {
   pname = "gh-infra";
-  version = "0.17.3";
+  version = "0.17.4";
   __structuredAttrs = true;
 
   src = fetchFromGitHub {
     owner = "babarot";
     repo = "gh-infra";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-n2hlCsH94x+tnOu0VKluMCILE732KhODAgP0RRnE/m4=";
+    hash = "sha256-QCKCnXPzSwbf8Uwtkl0alyghqxO5dQVycMDNy1/AMFM=";
   };
 
   vendorHash = "sha256-w0Ix1xpJQ5H4NttZCjF1ZWE0/o2US5K76X2bxMrtBF4=";
