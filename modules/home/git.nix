@@ -60,7 +60,7 @@
 
     delta = {
       enable = true;
-      enableGitIntegration = false;
+      enableGitIntegration = true;
       options = {
         navigate = true;
         dark = true;
