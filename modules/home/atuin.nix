@@ -30,6 +30,7 @@
       enter_accept = false;
       secrets_filter = true;
       logs.dir = "${config.xdg.stateHome}/atuin/logs";
+      ai.enabled = false;
     };
   };
 }
