@@ -9,7 +9,6 @@
 }:
 
 let
-  nodePackages = import ../../packages/node { inherit pkgs; };
   sharedModules = [
     ./1password.nix
     ./agent-skills.nix
@@ -32,6 +31,7 @@ let
     ./zsh.nix
   ];
   darwinModules = [
+    ./chrome-devtools-mcp.nix
     ./ghostty.nix
     ./gui-apps.nix
     ./karabiner
@@ -67,8 +67,5 @@ in
       ajmx
       (pkgs.callPackage ../../packages/jactionlint/package.nix { })
       (pkgs.callPackage ../../packages/redmine-cli/package.nix { })
-    ]
-    ++ lib.optionals isDarwin [
-      nodePackages.chrome-devtools-mcp
     ];
 }
