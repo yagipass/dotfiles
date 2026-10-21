@@ -1,13 +1,6 @@
-{
-  config,
-  dotfilesPath,
-  llmAgents,
-  ...
-}:
+{ config, dotfilesPath, ... }:
 
 {
-  home.packages = [ llmAgents.codex ];
-
   home.file = {
     ".codex/AGENTS.md".source =
       config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/modules/home/codex/AGENTS.md";
