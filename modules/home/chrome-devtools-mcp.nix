@@ -7,4 +7,6 @@
     usageStatistics = false;
     performanceCrux = false;
   };
+
+  home.sessionVariables.CHROME_DEVTOOLS_MCP_NO_UPDATE_CHECKS = "1";
 }
