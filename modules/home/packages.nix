@@ -22,7 +22,6 @@ let
     ./git.nix
     ./go.nix
     ./herdr
-    ./hunk.nix
     ./java.nix
     ./javascript.nix
     ./rust.nix
