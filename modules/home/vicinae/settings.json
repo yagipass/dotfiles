@@ -2,6 +2,9 @@
   "global_shortcuts": {
     "toggle": "control+space"
   },
+  "telemetry": {
+    "system_info": false
+  },
   "providers": {
     "wm": {
       "entrypoints": {
