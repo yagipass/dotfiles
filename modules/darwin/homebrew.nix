@@ -18,7 +18,7 @@
       "adobe-acrobat-reader"
       "android-studio"
       "beyond-compare"
-      "codex-app"
+      "chatgpt"
       "docker-desktop"
       "eclipse-rcp"
       "ghostty"
