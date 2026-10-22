@@ -31,6 +31,7 @@ let
 
       dontNpmBuild = true;
 
+      npmRebuildFlags = [ "--ignore-scripts" ];
       npmPackFlags = [ "--ignore-scripts" ];
 
       meta = {
