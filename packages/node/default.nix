@@ -49,8 +49,8 @@ in
     description = "Chrome DevTools MCP server and CLI";
     homepage = "https://github.com/ChromeDevTools/chrome-devtools-mcp";
     extraPostPatch = ''
-      substituteInPlace build/src/config/ConfigParser.js \
-        --replace-fail "resolvedArgs[key] = option.default;" "resolvedArgs[key] = key === 'channel' && !resolvedArgs.autoConnect ? 'beta' : option.default;"
+      substituteInPlace build/src/config/ServerConfig.js \
+        --replace-fail "...parseDefaultArgs(baseOptions)," "...parseDefaultArgs(baseOptions), ...(explicitArgs.autoConnect ? {} : { channel: 'beta' }),"
     '';
   };
 }
