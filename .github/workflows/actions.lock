@@ -9,6 +9,8 @@ workflows:
         - 'nixbuild/nix-quick-install-action@v35'
     '.github/workflows/update.yml':
         - 'actions/checkout@v7.0.1'
+        - 'actions/download-artifact@v8.0.2'
+        - 'actions/upload-artifact@v7.0.2'
         - 'nixbuild/nix-quick-install-action@v35'
         - 'peter-evans/create-pull-request@v8.1.1'
     '.github/workflows/watch-nixpkgs.yml':
@@ -19,6 +21,16 @@ dependencies:
         commit: 'sha1-3d3c42e5aac5ba805825da76410c181273ba90b1'
         owner_id: 44036562
         repo_id: 197814629
+    'actions/download-artifact@v8.0.2':
+        ref: 'v8.0.2'
+        commit: 'sha1-9000827ccba6bdab643e8b6fd33ac0654aef8333'
+        owner_id: 44036562
+        repo_id: 192626254
+    'actions/upload-artifact@v7.0.2':
+        ref: 'v7.0.2'
+        commit: 'sha1-cf430e030ddbb5b0abf93d22962f4752f3646cd9'
+        owner_id: 44036562
+        repo_id: 192625955
     'nix-community/cache-nix-action@v7.0.2':
         ref: 'v7.0.2'
         commit: 'sha1-7df957e333c1e5da7721f60227dbba6d06080569'
