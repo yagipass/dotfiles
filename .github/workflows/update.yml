@@ -17,11 +17,13 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     permissions:
-      contents: write
-      pull-requests: write
-      actions: write
+      contents: read
+    outputs:
+      body: ${{ steps.update.outputs.body }}
     steps:
       - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
 
       - uses: nixbuild/nix-quick-install-action@v35
         with:
@@ -48,6 +50,43 @@ jobs:
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
 
+      - name: Save the changes as a patch
+        run: |
+          git add --all
+          git diff --cached --binary > "$RUNNER_TEMP/update.patch"
+
+      - uses: actions/upload-artifact@v7.0.2
+        with:
+          name: update-patch
+          path: ${{ runner.temp }}/update.patch
+          if-no-files-found: error
+          retention-days: 1
+
+  pull-request:
+    needs: update
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: write
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/download-artifact@v8.0.2
+        with:
+          name: update-patch
+          path: ${{ runner.temp }}/update
+
+      - name: Apply the changes
+        run: |
+          patch="$RUNNER_TEMP/update/update.patch"
+          if [[ -s $patch ]]; then
+            git apply "$patch"
+          fi
+
       - uses: peter-evans/create-pull-request@v8.1.1
         id: pr
         with:
@@ -59,7 +98,7 @@ jobs:
           labels: |
             automated
             dependencies
-          body: ${{ steps.update.outputs.body }}
+          body: ${{ needs.update.outputs.body }}
 
       - name: Trigger CI
         if: steps.pr.outputs.pull-request-operation == 'created' || steps.pr.outputs.pull-request-operation == 'updated'
