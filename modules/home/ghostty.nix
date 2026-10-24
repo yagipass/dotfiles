@@ -27,6 +27,7 @@ _:
         "cmd+shift+up=text:\\x02\\x1bk"
         "cmd+shift+right=text:\\x02\\x1bl"
         "cmd+w=text:\\x02w"
+        "cmd+g=text:\\x02g/"
         "cmd+digit_1=text:\\x02\\x1b1"
         "cmd+digit_2=text:\\x02\\x1b2"
         "cmd+digit_3=text:\\x02\\x1b3"
