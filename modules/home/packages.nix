@@ -56,7 +56,6 @@ in
       bat
       fd
       ast-grep
-      termshot
       pandoc
       dust
       bottom
