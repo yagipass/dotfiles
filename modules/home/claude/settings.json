@@ -46,7 +46,8 @@
     "command": "~/.claude/statusline.ts"
   },
   "enabledPlugins": {
-    "ast-grep@ast-grep-marketplace": true
+    "ast-grep@ast-grep-marketplace": true,
+    "claude-security@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "anthropic-agent-skills": {
