@@ -47,6 +47,7 @@
     };
     dock = {
       autohide = true;
+      autohide-delay = 3.0;
       orientation = "left";
       show-process-indicators = true;
       show-recents = false;
