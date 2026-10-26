@@ -8,17 +8,17 @@
 
 buildGoModule (finalAttrs: {
   pname = "redmine-cli";
-  version = "2.14.0";
+  version = "2.14.1";
   __structuredAttrs = true;
 
   src = fetchFromGitHub {
     owner = "aarondpn";
     repo = "redmine-cli";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-jaBGoY+ZltvM1jHj8zIJfTBto/Urlf43b7afnTvxmkA=";
+    hash = "sha256-pa7NmqjjGn4HI5YQwdgR7umowtbya5fjevLUeElM5fA=";
   };
 
-  vendorHash = "sha256-LPUeVGcGQgIAMS9CtvkNwqLkhpXRMdRy2yq3bjwKJSM=";
+  vendorHash = "sha256-L7HoqpIFCo2Fth3Ct9c40fcH1/KP4dxMg3ulnGgJ5Qs=";
 
   subPackages = [ "cmd/redmine" ];
 
