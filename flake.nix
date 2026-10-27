@@ -147,7 +147,7 @@
               statix.enable = true;
               jactionlint = {
                 enable = true;
-                files = "^.github/workflows/";
+                files = "^\\.github/workflows/";
                 types = [ "yaml" ];
                 package = pkgs.jactionlint;
                 entry = lib.getExe pkgs.jactionlint;
