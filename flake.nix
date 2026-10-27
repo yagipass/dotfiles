@@ -145,7 +145,13 @@
                 package = config.treefmt.build.wrapper;
               };
               statix.enable = true;
-              actionlint.enable = true;
+              jactionlint = {
+                enable = true;
+                files = "^.github/workflows/";
+                types = [ "yaml" ];
+                package = pkgs.jactionlint;
+                entry = lib.getExe pkgs.jactionlint;
+              };
               shellcheck = {
                 enable = true;
                 excludes = [ "^\\.envrc$" ];
@@ -157,7 +163,6 @@
             packages = {
               zabrze = pkgs.callPackage ./packages/zabrze/package.nix { };
               gh-actions-lock = pkgs.callPackage ./packages/gh-actions-lock/package.nix { };
-              jactionlint = pkgs.callPackage ./packages/jactionlint/package.nix { };
               gh-infra = pkgs.callPackage ./packages/gh-infra/package.nix { };
               redmine-cli = pkgs.callPackage ./packages/redmine-cli/package.nix { };
             }
@@ -190,7 +195,6 @@
               inherit (self'.packages)
                 zabrze
                 gh-actions-lock
-                jactionlint
                 gh-infra
                 redmine-cli
                 ;
