@@ -72,6 +72,7 @@
       gitCredentialHelper.enable = false;
       settings = {
         git_protocol = "https";
+        telemetry = "disabled";
         aliases.co = "pr checkout";
       };
       extensions = [
