@@ -101,7 +101,10 @@
           showIcons = true;
         };
         keybinding.universal = {
-          quit = "Q";
+          quit = [
+            "Q"
+            "<ctrl+c>"
+          ];
           quitWithoutChangingDirectory = "q";
         };
         git.diffRenderers = [
