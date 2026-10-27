@@ -100,6 +100,13 @@
           language = "ja";
           showIcons = true;
         };
+        keybinding.universal = {
+          quit = [
+            "Q"
+            "<ctrl+c>"
+          ];
+          quitWithoutChangingDirectory = "q";
+        };
         git.diffRenderers = [
           {
             colorArg = "always";
