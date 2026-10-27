@@ -64,7 +64,6 @@ in
       llmAgents.ccusage
       vbtm
       ajmx
-      (pkgs.callPackage ../../packages/jactionlint/package.nix { })
       (pkgs.callPackage ../../packages/redmine-cli/package.nix { })
     ];
 }
