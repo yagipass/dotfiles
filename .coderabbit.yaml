@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+reviews:
+  high_level_summary: false
+  path_filters:
+    - "!flake.lock"
+    - "!.github/workflows/actions.lock"
+    - "!packages/node/*/package-lock.json"
+  auto_review:
+    ignore_usernames:
+      - "dependabot[bot]"
+      - "github-actions[bot]"
+  tools:
+    markdownlint:
+      enabled: false
+knowledge_base:
+  code_guidelines:
+    filePatterns:
+      - AGENTS.md
