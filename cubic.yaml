@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://cubic.dev/schema/cubic-repository-config.schema.json
+version: 1
+
+reviews:
+  external_contributors_require_manual_review: true
+  ignore:
+    files:
+      - flake.lock
+      - .github/workflows/actions.lock
+      - packages/node/*/package-lock.json
+    head_branches:
+      - "dependabot/**"
+      - chore/update-dependencies
+  custom_rules:
+    - name: Repository guide
+      file_paths:
+        - AGENTS.md
+
+pr_descriptions:
+  generate: false
+  cubic_review_link: false
