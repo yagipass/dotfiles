@@ -8,5 +8,8 @@
     performanceCrux = false;
   };
 
-  home.sessionVariables.CHROME_DEVTOOLS_MCP_NO_UPDATE_CHECKS = "1";
+  home.sessionVariables = {
+    CHROME_DEVTOOLS_MCP_NO_UPDATE_CHECKS = "1";
+    CHROME_DEVTOOLS_MCP_NO_USAGE_STATISTICS = "1";
+  };
 }
