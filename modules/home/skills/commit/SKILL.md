@@ -15,11 +15,15 @@ a pull request are not.
 One optional argument, `branch`, as `true` or `false`. Anything else means
 `false`.
 
-- `true`: create a branch from the current HEAD with `git switch -c` and
-  commit on it. Name it `<type>/<short-kebab-subject>` from the commit
-  message, following the prefix style in `git branch -a`, for example
-  `feat/add-eclipse-rcp`.
+- `true`: create a branch from the current HEAD with `git switch -c`, named
+  as described in Branch name, and commit on it.
 - `false`: commit on the current branch.
+
+## Branch name
+
+Name branches `<type>/<short-kebab-subject>` from the commit message, using
+its type without the scope and a few lowercase words from its subject, for
+example `feat/add-eclipse-rcp`.
 
 ## Workflow
 
@@ -30,7 +34,11 @@ One optional argument, `branch`, as `true` or `false`. Anything else means
 2. Run `git log --oneline -30` and reuse the types and scopes already in use.
 3. Write the message. If the staged diff mixes unrelated changes, propose
    splitting it into several commits.
-4. If `branch` is `true`, create the branch now.
+4. If `branch` is `true`, create the branch now. Otherwise, if the current
+   branch is not the default branch and its name does not follow Branch name,
+   such as `wip/xcefwe-fwew`, rename it with `git branch -m` when
+   `git ls-remote --heads origin "refs/heads/<branch>"` shows nothing. If the
+   branch is already on the remote, ask the user.
 5. Commit with a heredoc so the body survives shell quoting:
 
    ```sh
