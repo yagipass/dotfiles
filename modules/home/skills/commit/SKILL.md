@@ -36,9 +36,9 @@ example `feat/add-eclipse-rcp`.
    splitting it into several commits.
 4. If `branch` is `true`, create the branch now. Otherwise, if the current
    branch is not the default branch and its name does not follow Branch name,
-   such as `claude/xcefwe-fwew`, rename it with `git branch -m` when
-   `git ls-remote --heads origin <branch>` shows nothing. If the branch is
-   already on the remote, ask the user.
+   such as `wip/xcefwe-fwew`, rename it with `git branch -m` when
+   `git ls-remote --heads origin "refs/heads/<branch>"` shows nothing. If the
+   branch is already on the remote, ask the user.
 5. Commit with a heredoc so the body survives shell quoting:
 
    ```sh
