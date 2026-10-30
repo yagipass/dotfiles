@@ -70,10 +70,9 @@ cause, and the files or functions behind the problem. Those are for whoever
 works on the issue to find. State only what was observed, what was run, or
 what the user said. Paste errors and logs verbatim in fenced code blocks,
 never as screenshots, and put long ones in `<details>`. Leave out secrets,
-tokens, and work-internal values, including any in logs and paths. Link
-related issues and pull requests in this repository as `#N`. Do not link to
-other repositories or reference anything in them, such as `owner/repo#N`,
-`owner/repo@sha`, or their URLs.
+tokens, and work-internal values, including any in logs and paths. Do not
+link to other repositories or reference anything in them, such as
+`owner/repo#N`, `owner/repo@sha`, or their URLs.
 
 With a template, fill it in by hand, since `gh issue create` does not read
 issue forms:
@@ -85,10 +84,6 @@ issue forms:
   fix. If a required field cannot be filled from the conversation or the
   repository, or only with a fix, ask the user. Put the value of a field with
   `render:` in a code block of that language.
-- If the form has no `Checked so far` field, add a `### Checked so far`
-  section right after the reproduction or proposal field.
-- Write a field that matches a section in the list below, such as the
-  proposal or `Checked so far` field, as that section says.
 - For a Markdown template, keep its headings.
 
 Without a template, use Markdown sections in this order, sized to the issue,
@@ -102,6 +97,3 @@ and drop the ones that do not apply:
    it, with example usage. For docs, what the reader needed to find.
 4. `## Alternatives`: what the user does now instead, and other tools or
    workflows they tried, with why each falls short.
-5. `## Checked so far`: what the user or you actually ran and what it showed,
-   ending with a `Not checked yet:` line. Say so here if nobody has
-   reproduced the bug.

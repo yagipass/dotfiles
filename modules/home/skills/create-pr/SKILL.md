@@ -26,22 +26,22 @@ amending, and other force-pushes are not.
      for each later layer. Name branches as the `commit` skill does, and
      commit only each layer's files on it.
    - Otherwise, pass `branch: true` on the default branch.
-3. Run the checks the repository's AGENTS.md requires, unless they already ran
-   on this diff. On a stack, run them on each new or changed layer.
+3. Run the checks that the repository's AGENTS.md, README.md, and
+   CONTRIBUTING.md require, unless they already ran on this diff. On a stack,
+   run them on each new or changed layer.
 4. Write each new pull request's title and body in English, covering only its
    layer on a stack. The repository's pull request template and contributing
    guide, including rules on AI-written text, take precedence.
    - Title: the commit subject, or one Conventional Commits subject covering
      all commits.
-   - Body: these Markdown sections in order, sized to the change. Drop those
-     that do not apply.
+   - Body: these Markdown sections in order. Drop those that do not apply.
      1. `## Why`: the problem and who it affects.
      2. `## What`: what changed.
-     3. `## Trade-offs`: rejected alternatives and known shortcomings.
-     4. `## Verification`: `Checked:` and `Not checked:` lists of what you
-        verified by hand. Checks CI also runs get one line at most.
-     5. `## After merging`: breaking changes and manual steps.
-     6. A last line `Closes #N`, only for issues named in the conversation.
+     3. A last line `Closes #N`, only for issues named in the conversation.
+   - Keep it short: one to three sentences for `## Why`, and short bullets of
+     one sentence each for `## What`. Leave out how the problem was
+     investigated, detailed explanations of how things work, and anything the
+     diff already shows.
    - Refer to issues and pull requests in this repository only, as `#N`. Do
      not link to other repositories or reference anything in them, such as
      `owner/repo#N`, `owner/repo@sha`, or their URLs.
