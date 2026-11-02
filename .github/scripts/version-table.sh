@@ -4,6 +4,8 @@ package_versions() {
   {
     nix eval --json .#homeConfigurations.default.config.home.packages --apply "$apply"
     nix eval --json .#nixosConfigurations.wsl.config.home-manager.users.nixos.home.packages --apply "$apply"
+    nix eval --json .#homeConfigurations.default.config.programs.gh.extensions --apply "$apply"
+    nix eval --json .#nixosConfigurations.wsl.config.home-manager.users.nixos.programs.gh.extensions --apply "$apply"
   } | jq -sc 'add | map(select(.version != null)) | unique_by(.name)'
 }
 
