@@ -65,5 +65,6 @@ in
       vbtm
       ajmx
       (pkgs.callPackage ../../packages/redmine-cli/package.nix { })
-    ];
+    ]
+    ++ lib.optionals isDarwin [ llmAgents.agent-desktop ];
 }
