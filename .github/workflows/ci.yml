@@ -22,6 +22,7 @@ jobs:
   check-linux:
     runs-on: ubuntu-latest
     timeout-minutes: 60
+    environment: ${{ github.ref == 'refs/heads/main' && 'Cachix' || '' }}
     steps:
       - uses: actions/checkout@v7.0.1
         with:
@@ -55,6 +56,7 @@ jobs:
   check-darwin:
     runs-on: macos-latest
     timeout-minutes: 90
+    environment: ${{ github.ref == 'refs/heads/main' && 'Cachix' || '' }}
     steps:
       - uses: actions/checkout@v7.0.1
         with:
