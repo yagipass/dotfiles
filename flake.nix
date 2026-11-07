@@ -26,6 +26,7 @@
     };
     verbatime.url = "github:yagipass/verbatime";
     ajmx.url = "github:yagipass/ajmx";
+    nestodo.url = "github:yagipass/nestodo";
     omniwm = {
       url = "github:mst-mkt/omniwm.nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -82,6 +83,7 @@
           llmAgents = inputs'.llm-agents.packages;
           inherit (inputs'.verbatime.packages) vbtm;
           inherit (inputs'.ajmx.packages) ajmx;
+          inherit (inputs'.nestodo.packages) nestodo;
         };
         homeConfiguration = withSystem darwin.system (
           { pkgs, inputs', ... }:

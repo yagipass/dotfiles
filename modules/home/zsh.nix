@@ -115,6 +115,7 @@ in
       ''
         # Rendered by `just secrets`; may not exist.
         [[ -r "${config.xdg.configHome}/zsh/work.zsh" ]] && source "${config.xdg.configHome}/zsh/work.zsh"
+        [[ -r "${config.xdg.configHome}/zsh/personal.zsh" ]] && source "${config.xdg.configHome}/zsh/personal.zsh"
 
         ghq-fzf() {
           local dir

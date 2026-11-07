@@ -165,6 +165,7 @@ secrets:
   render git-personal.inc.tpl "$config_home/git/personal.inc"
   render git-allowed-signers.tpl "$config_home/git/allowed_signers"
   render work.zsh.tpl "$config_home/zsh/work.zsh"
+  render personal.zsh.tpl "$config_home/zsh/personal.zsh"
   render maven-settings.xml.tpl "$HOME/.m2/work-settings.xml"
   render mavenrc.tpl "$HOME/.mavenrc"
   render work.gradle.tpl "$HOME/.gradle/init.d/work.gradle"

@@ -4,6 +4,7 @@
   llmAgents,
   vbtm,
   ajmx,
+  nestodo,
   isDarwin,
   ...
 }:
@@ -64,6 +65,7 @@ in
       llmAgents.ccusage
       vbtm
       ajmx
+      nestodo
       (pkgs.callPackage ../../packages/redmine-cli/package.nix { })
     ]
     ++ lib.optionals isDarwin [ llmAgents.agent-desktop ];
