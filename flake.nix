@@ -164,7 +164,6 @@
 
             packages = {
               zabrze = pkgs.callPackage ./packages/zabrze/package.nix { };
-              gh-actions-lock = pkgs.callPackage ./packages/gh-actions-lock/package.nix { };
               gh-infra = pkgs.callPackage ./packages/gh-infra/package.nix { };
               redmine-cli = pkgs.callPackage ./packages/redmine-cli/package.nix { };
             }
@@ -196,7 +195,6 @@
                   '';
               inherit (self'.packages)
                 zabrze
-                gh-actions-lock
                 gh-infra
                 redmine-cli
                 ;
