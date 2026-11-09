@@ -50,7 +50,8 @@ amending, and other force-pushes are not.
 5. Push and open the pull request. Attach real screenshots or recordings of a
    visual change with `--attach '<file>#<alt text>'`. Before attaching images
    or videos the user supplied, list them and ask the user which to attach.
-   If the branch already has an open pull request, only push.
+   Attach only the ones the user picks. If the branch already has an open
+   pull request, only push.
 
    ```sh
    git push -u origin HEAD
