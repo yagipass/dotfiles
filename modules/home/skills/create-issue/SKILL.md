@@ -38,8 +38,9 @@ closing, labelling, and commenting on existing issues are not.
 7. Open the issue. Pass the template's `labels`, or without a template the
    label for the title prefix: `bug` for `bug:`, `enhancement` for `feat:`,
    and `documentation` for `doc:`. Skip labels that
-   `gh label list -R <owner>/<repo>` does not show. Attach images or videos
-   the user supplied with `--attach '<file>#<alt text>'`; gh cannot attach
+   `gh label list -R <owner>/<repo>` does not show. Before attaching images
+   or videos the user supplied, list them and ask the user which to attach.
+   Attach only those with `--attach '<file>#<alt text>'`; gh cannot attach
    other files.
 
    ```sh
