@@ -141,6 +141,12 @@
           {
             treefmt.imports = [ ./treefmt.nix ];
 
+            pre-commit.settings.package = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin (
+              pkgs.pre-commit.override {
+                dotnetCorePackages.sdk_8_0-source.meta.platforms = [ ];
+              }
+            );
+
             pre-commit.settings.hooks = {
               treefmt = {
                 enable = true;
