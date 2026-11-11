@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, nestodo-desktop, ... }:
 
 {
   home.packages = with pkgs; [
@@ -7,6 +7,7 @@
     drawio
     dbeaver-bin
     (callPackage ../../packages/jdk-mission-control/package.nix { })
+    nestodo-desktop
   ];
 
   targets.darwin.copyApps = {

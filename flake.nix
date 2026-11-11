@@ -83,7 +83,7 @@
           llmAgents = inputs'.llm-agents.packages;
           inherit (inputs'.verbatime.packages) vbtm;
           inherit (inputs'.ajmx.packages) ajmx;
-          inherit (inputs'.nestodo.packages) nestodo;
+          inherit (inputs'.nestodo.packages) nestodo nestodo-desktop;
         };
         homeConfiguration = withSystem darwin.system (
           { pkgs, inputs', ... }:
