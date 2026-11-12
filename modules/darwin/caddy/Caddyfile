@@ -1,0 +1,13 @@
+{
+	admin off
+	auto_https off
+}
+
+https://*.localhost.yagipass.me {
+	bind 127.0.0.1
+	tls @devcerts@/fullchain.pem @devcerts@/privkey.pem
+	@port header_regexp Host ^\d+\.localhost\.yagipass\.me
+	reverse_proxy @port localhost:{labels.3} {
+		header_up Host localhost:{labels.3}
+	}
+}
