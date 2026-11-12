@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./caddy
     ./homebrew.nix
     ./nh.nix
   ];

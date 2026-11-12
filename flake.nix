@@ -96,7 +96,7 @@
         darwinConfiguration = inputs.nix-darwin.lib.darwinSystem {
           inherit (darwin) system;
           specialArgs = {
-            inherit (darwin) username;
+            inherit (darwin) username homeDirectory;
           };
           modules = [ ./modules/darwin ];
         };
