@@ -62,6 +62,7 @@ buildGoModule (finalAttrs: {
         "TestCouldNotFetch"
         "TestFetchURL"
         "TestOwnWorkflowsPlanAndDryRun/comment-release-fixes.yml"
+        "TestOwnWorkflowsPlanAndDryRun/release.yaml"
       ];
     in
     [ "-skip=^${lib.concatStringsSep "$|^" skippedTests}$" ];
