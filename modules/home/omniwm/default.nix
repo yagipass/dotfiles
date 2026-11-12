@@ -38,14 +38,8 @@
         { }
         { }
         { }
-        {
-          displayName = "❤️";
-          monitorAssignment.type = "secondary";
-        }
-        {
-          displayName = "🚀";
-          monitorAssignment.type = "secondary";
-        }
+        { monitorAssignment.type = "secondary"; }
+        { monitorAssignment.type = "secondary"; }
         { monitorAssignment.type = "secondary"; }
         { monitorAssignment.type = "secondary"; }
       ];
