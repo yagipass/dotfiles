@@ -21,7 +21,7 @@ update:
   @just update-{{host}}
 
 # Update every input regardless of host (used by CI).
-update-all: update-flake _update-node-packages _update-jmc _update-gh-infra _update-redmine-cli _update-zabrze fmt
+update-all: update-flake _update-node-packages _update-jmc _update-gh-infra _update-jactionlint _update-redmine-cli _update-zabrze fmt
 
 # Update flake.lock only.
 update-flake:
@@ -35,6 +35,9 @@ update-jmc: _update-jmc fmt lint
 
 # Update Nix-wrapped gh-infra.
 update-gh-infra: _update-gh-infra fmt lint
+
+# Update Nix-wrapped jactionlint.
+update-jactionlint: _update-jactionlint fmt lint
 
 # Update Nix-wrapped redmine-cli.
 update-redmine-cli: _update-redmine-cli fmt lint
@@ -66,6 +69,10 @@ _update-jmc:
 [private]
 _update-gh-infra:
   nix-update --flake gh-infra --use-github-releases --version-regex '^v([0-9.]+)$'
+
+[private]
+_update-jactionlint:
+  nix-update --flake jactionlint --use-github-releases --version-regex '^v([0-9.]+)$'
 
 [private]
 _update-redmine-cli:

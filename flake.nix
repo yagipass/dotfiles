@@ -157,8 +157,8 @@
                 enable = true;
                 files = "^\\.github/workflows/";
                 types = [ "yaml" ];
-                package = pkgs.jactionlint;
-                entry = lib.getExe pkgs.jactionlint;
+                package = self'.packages.jactionlint;
+                entry = lib.getExe self'.packages.jactionlint;
               };
               shellcheck = {
                 enable = true;
@@ -171,6 +171,7 @@
             packages = {
               zabrze = pkgs.callPackage ./packages/zabrze/package.nix { };
               gh-infra = pkgs.callPackage ./packages/gh-infra/package.nix { };
+              jactionlint = pkgs.callPackage ./packages/jactionlint/package.nix { };
               redmine-cli = pkgs.callPackage ./packages/redmine-cli/package.nix { };
             }
             // lib.optionalAttrs (system == darwin.system) {
@@ -202,6 +203,7 @@
               inherit (self'.packages)
                 zabrze
                 gh-infra
+                jactionlint
                 redmine-cli
                 ;
             }
