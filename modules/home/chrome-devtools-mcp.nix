@@ -6,6 +6,7 @@
   xdg.configFile."cd4a/config.json".text = builtins.toJSON {
     usageStatistics = false;
     performanceCrux = false;
+    channel = "beta";
   };
 
   home.sessionVariables = {
