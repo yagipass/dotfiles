@@ -43,9 +43,9 @@ in
 {
   chrome-devtools-mcp = mkNpmPackage {
     pname = "chrome-devtools-mcp";
-    version = "1.12.0";
-    hash = "sha256-Ignut/iWDRCSZ97YoJMVJC6fINVXDgMi3uSDdHlYAsY=";
-    npmDepsHash = "sha256-QZqMc/GEh0pj7Gajv/4JwzWF5alxFl9IUXrzPGtBzTw=";
+    version = "1.13.0";
+    hash = "sha256-Tq62vmf6Z2OxG7cQ+PYuI5OYrBVeUbfkGGPXFrhb3L8=";
+    npmDepsHash = "sha256-S6Z/KAmbBvX/QhJ57lEki1RhucMPUpwZn1WNWZSrn/s=";
     description = "Chrome DevTools MCP server and CLI";
     homepage = "https://github.com/ChromeDevTools/chrome-devtools-mcp";
     extraPostPatch = ''
