@@ -48,9 +48,5 @@ in
     npmDepsHash = "sha256-S6Z/KAmbBvX/QhJ57lEki1RhucMPUpwZn1WNWZSrn/s=";
     description = "Chrome DevTools MCP server and CLI";
     homepage = "https://github.com/ChromeDevTools/chrome-devtools-mcp";
-    extraPostPatch = ''
-      substituteInPlace build/src/config/ServerConfig.js \
-        --replace-fail "...parseDefaultArgs(baseOptions)," "...parseDefaultArgs(baseOptions), ...(explicitArgs.autoConnect ? {} : { channel: 'beta' }),"
-    '';
   };
 }
