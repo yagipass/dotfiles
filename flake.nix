@@ -184,7 +184,7 @@
                 pkgs.just
                 pkgs.bun
                 pkgs.nodejs
-                pkgs.nix-update
+                (pkgs.nix-update.override { nix = pkgs.nixVersions.nix_2_34; })
                 pkgs.nix-init
               ]
               ++ config.pre-commit.settings.enabledPackages;
