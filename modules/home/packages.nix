@@ -68,5 +68,8 @@ in
       nestodo
       (pkgs.callPackage ../../packages/redmine-cli/package.nix { })
     ]
-    ++ lib.optionals isDarwin [ llmAgents.agent-desktop ];
+    ++ lib.optionals isDarwin [
+      llmAgents.agent-desktop
+      (pkgs.callPackage ../../packages/cccc/package.nix { })
+    ];
 }
