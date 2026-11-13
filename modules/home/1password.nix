@@ -19,5 +19,9 @@
     [[ssh-keys]]
     item = "git-personal-signing-key"
     vault = "dotfiles"
+
+    [[ssh-keys]]
+    item = "OCI-ampare-vm-key"
+    vault = "dotfiles"
   '';
 }
