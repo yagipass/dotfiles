@@ -3,6 +3,7 @@
   rustPlatform,
   fetchFromGitHub,
   gitMinimal,
+  versionCheckHook,
 }:
 
 rustPlatform.buildRustPackage (finalAttrs: {
@@ -28,6 +29,9 @@ rustPlatform.buildRustPackage (finalAttrs: {
   cargoTestFlags = finalAttrs.cargoBuildFlags;
 
   nativeCheckInputs = [ gitMinimal ];
+
+  doInstallCheck = true;
+  nativeInstallCheckInputs = [ versionCheckHook ];
 
   meta = {
     description = "Cognitive and cyclomatic complexity measurement tool";
