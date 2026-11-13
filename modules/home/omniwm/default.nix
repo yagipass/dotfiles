@@ -1,4 +1,6 @@
 {
+  config,
+  dotfilesPath,
   omniwmModule,
   omniwmLib,
   ...
@@ -6,6 +8,11 @@
 
 {
   imports = [ omniwmModule ];
+
+  xdg.configFile."omniwm/shell/shell.toml" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/modules/home/omniwm/shell.toml";
+    force = true;
+  };
 
   programs.omniwm = {
     enable = true;
@@ -38,14 +45,8 @@
         { }
         { }
         { }
-        {
-          displayName = "❤️";
-          monitorAssignment.type = "secondary";
-        }
-        {
-          displayName = "🚀";
-          monitorAssignment.type = "secondary";
-        }
+        { monitorAssignment.type = "secondary"; }
+        { monitorAssignment.type = "secondary"; }
         { monitorAssignment.type = "secondary"; }
         { monitorAssignment.type = "secondary"; }
       ];
