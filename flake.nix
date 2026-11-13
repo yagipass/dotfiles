@@ -173,6 +173,7 @@
               gh-infra = pkgs.callPackage ./packages/gh-infra/package.nix { };
               jactionlint = pkgs.callPackage ./packages/jactionlint/package.nix { };
               redmine-cli = pkgs.callPackage ./packages/redmine-cli/package.nix { };
+              cccc = pkgs.callPackage ./packages/cccc/package.nix { };
             }
             // lib.optionalAttrs (system == darwin.system) {
               inherit (import ./packages/node { inherit pkgs; }) chrome-devtools-mcp;
@@ -205,6 +206,7 @@
                 gh-infra
                 jactionlint
                 redmine-cli
+                cccc
                 ;
             }
             // lib.optionalAttrs (system == darwin.system) {
