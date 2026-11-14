@@ -28,6 +28,6 @@ in
   };
 
   system.activationScripts.postActivation.text = ''
-    /bin/launchctl kickstart system/${label} || echo "warning: failed to kickstart ${label}" >&2
+    /bin/launchctl kickstart -k system/${label} || echo "warning: failed to kickstart ${label}" >&2
   '';
 }
