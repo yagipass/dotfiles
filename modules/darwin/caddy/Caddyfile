@@ -1,11 +1,13 @@
 {
 	admin off
-	auto_https off
+	auto_https disable_redirects
 }
 
 https://*.localhost.yagipass.me {
 	bind 127.0.0.1
-	tls @devcerts@/fullchain.pem @devcerts@/privkey.pem
+	tls {
+		dns cloudflare {env.CF_API_TOKEN}
+	}
 	@port header_regexp Host ^\d+\.localhost\.yagipass\.me
 	reverse_proxy @port localhost:{labels.3} {
 		header_up Host localhost:{labels.3}
