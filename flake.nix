@@ -174,6 +174,7 @@
               jactionlint = pkgs.callPackage ./packages/jactionlint/package.nix { };
               redmine-cli = pkgs.callPackage ./packages/redmine-cli/package.nix { };
               cccc = pkgs.callPackage ./packages/cccc/package.nix { };
+              caddy = pkgs.callPackage ./packages/caddy/package.nix { };
             }
             // lib.optionalAttrs (system == darwin.system) {
               inherit (import ./packages/node { inherit pkgs; }) chrome-devtools-mcp;
@@ -210,7 +211,7 @@
                 ;
             }
             // lib.optionalAttrs (system == darwin.system) {
-              inherit (self'.packages) chrome-devtools-mcp;
+              inherit (self'.packages) chrome-devtools-mcp caddy;
               home = homeConfiguration.activationPackage;
               darwin = darwinConfiguration.system;
             }

@@ -21,7 +21,7 @@ update:
   @just update-{{host}}
 
 # Update every input regardless of host (used by CI).
-update-all: update-flake _update-node-packages _update-jmc _update-gh-infra _update-jactionlint _update-redmine-cli _update-zabrze _update-cccc fmt
+update-all: update-flake _update-node-packages _update-jmc _update-gh-infra _update-jactionlint _update-redmine-cli _update-zabrze _update-cccc _update-caddy fmt
 
 # Update flake.lock only.
 update-flake:
@@ -48,8 +48,11 @@ update-zabrze: _update-zabrze fmt lint
 # Update Nix-wrapped cccc.
 update-cccc: _update-cccc fmt lint
 
+# Update the hash of Caddy with plugins for the locked nixpkgs.
+update-caddy: _update-caddy fmt lint
+
 [private]
-update-macos: _update-node-packages update-flake fmt lint
+update-macos: _update-node-packages update-flake _update-caddy fmt lint
 
 [private]
 update-wsl: update-flake fmt lint
@@ -88,6 +91,10 @@ _update-zabrze:
 [private]
 _update-cccc:
   nix-update --flake cccc --use-github-releases --version-regex '^v([0-9.]+)$'
+
+[private]
+_update-caddy:
+  nix-update --flake caddy --version skip --override-filename packages/caddy/package.nix
 
 # Format the repository.
 fmt:
@@ -149,7 +156,7 @@ switch-home:
 switch-darwin:
   nh darwin switch . -H {{darwin_config}}
 
-# Render config files from 1Password.
+# Render config files from 1Password and, on macOS, store the Caddy token in the System keychain.
 secrets:
   #!/usr/bin/env bash
   set -euo pipefail
@@ -176,6 +183,10 @@ secrets:
   render maven-settings.xml.tpl "$HOME/.m2/work-settings.xml"
   render mavenrc.tpl "$HOME/.mavenrc"
   render work.gradle.tpl "$HOME/.gradle/init.d/work.gradle"
+  if [[ "{{os()}}" == macos ]]; then
+    op inject --in-file templates/caddy-keychain.tpl | sudo security -i
+    echo "stored caddy-cloudflare in the System keychain"
+  fi
 
 # Delete old Nix generations and unused store paths.
 gc:
