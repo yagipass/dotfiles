@@ -87,7 +87,7 @@ jobs:
             git apply "$patch"
           fi
 
-      - uses: peter-evans/create-pull-request@v8.1.1
+      - uses: peter-evans/create-pull-request@v8.1.2
         id: pr
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
