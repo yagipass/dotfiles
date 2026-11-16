@@ -8,17 +8,17 @@
 
 buildGo127Module (finalAttrs: {
   pname = "redmine-cli";
-  version = "2.20.0";
+  version = "2.20.1";
   __structuredAttrs = true;
 
   src = fetchFromGitHub {
     owner = "aarondpn";
     repo = "redmine-cli";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-nusthLjpLNnb22a9fj7mwB1yeolA0gq7WVsG+uZUzSw=";
+    hash = "sha256-jYK6t3TWNWWfmSLAi3PdNa8GYOyE80dni8vmlQVAYgM=";
   };
 
-  vendorHash = "sha256-wlc7o19PWLvY5J6cmLvOEIIpDnoFp9KQEw0ddohPBgE=";
+  vendorHash = "sha256-dKhTlhr9mIRn4CjdiQiynndtTN4xcdqusAwgCQFDwXw=";
 
   subPackages = [ "cmd/redmine" ];
 
