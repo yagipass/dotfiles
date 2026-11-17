@@ -176,6 +176,7 @@ secrets:
   }
   render git-profiles.inc.tpl "$config_home/git/profiles.inc"
   render git-work.inc.tpl "$config_home/git/work.inc"
+  render git-work-github.inc.tpl "$config_home/git/work-github.inc"
   render git-personal.inc.tpl "$config_home/git/personal.inc"
   render git-allowed-signers.tpl "$config_home/git/allowed_signers"
   render work.zsh.tpl "$config_home/zsh/work.zsh"
