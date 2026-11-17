@@ -3,13 +3,19 @@
 	auto_https disable_redirects
 }
 
-https://*.localhost.yagipass.me {
+https://localhost.yagipass.me, https://*.localhost.yagipass.me {
 	bind 127.0.0.1
 	tls {
 		dns cloudflare {env.CF_API_TOKEN}
 	}
+
+	@apex host localhost.yagipass.me
+	reverse_proxy @apex localhost:80 {
+		header_down Location ^http:// https://
+	}
+
 	@port header_regexp Host ^\d+\.localhost\.yagipass\.me
 	reverse_proxy @port localhost:{labels.3} {
-		header_up Host localhost:{labels.3}
+		header_down Location ^http:// https://
 	}
 }
