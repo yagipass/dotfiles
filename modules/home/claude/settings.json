@@ -106,6 +106,7 @@
       "effortLevel": "xhigh"
     }
   },
+  "tui": "fullscreen",
   "autoMemoryEnabled": false,
   "skipWorkflowUsageWarning": false,
   "skipAutoPermissionPrompt": true
