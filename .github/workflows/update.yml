@@ -67,9 +67,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
-      contents: write
-      pull-requests: write
-      actions: write
+      contents: read
     steps:
       - uses: actions/checkout@v7.0.1
         with:
@@ -87,10 +85,17 @@ jobs:
             git apply "$patch"
           fi
 
-      - uses: peter-evans/create-pull-request@v8.1.2
-        id: pr
+      - uses: actions/create-github-app-token@v3.3.0
+        id: app-token
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          client-id: ${{ secrets.UPDATE_APP_CLIENT_ID }}
+          private-key: ${{ secrets.UPDATE_APP_PRIVATE_KEY }}
+          permission-contents: write
+          permission-pull-requests: write
+
+      - uses: peter-evans/create-pull-request@v8.1.2
+        with:
+          token: ${{ steps.app-token.outputs.token }}
           branch: chore/update-dependencies
           delete-branch: true
           commit-message: "chore: update dependencies"
@@ -99,10 +104,3 @@ jobs:
             automated
             dependencies
           body: ${{ needs.update.outputs.body }}
-
-      - name: Trigger CI
-        if: steps.pr.outputs.pull-request-operation == 'created' || steps.pr.outputs.pull-request-operation == 'updated'
-        env:
-          GH_TOKEN: ${{ github.token }}
-          PR_BRANCH: ${{ steps.pr.outputs.pull-request-branch }}
-        run: gh workflow run ci.yml --ref "$PR_BRANCH"
