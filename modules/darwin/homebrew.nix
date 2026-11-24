@@ -30,6 +30,7 @@
       "obsidian"
       "slack"
       "tailscale-app"
+      "vicinae"
       "visual-studio-code"
       "zoom"
     ];
