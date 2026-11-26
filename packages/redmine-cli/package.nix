@@ -1,12 +1,12 @@
 {
   lib,
-  buildGo127Module,
+  buildGoModule,
   fetchFromGitHub,
   makeWrapper,
   versionCheckHook,
 }:
 
-buildGo127Module (finalAttrs: {
+buildGoModule (finalAttrs: {
   pname = "redmine-cli";
   version = "2.20.2";
   __structuredAttrs = true;
