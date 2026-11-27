@@ -8,17 +8,17 @@
 
 rustPlatform.buildRustPackage (finalAttrs: {
   pname = "cccc";
-  version = "1.10.0";
+  version = "1.10.1";
   __structuredAttrs = true;
 
   src = fetchFromGitHub {
     owner = "moznion";
     repo = "cccc";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-E3KQkLj1yG5AHxXV273NALR7w2LcNnrIpcm4gHFuHKU=";
+    hash = "sha256-sZ2ciJ8d4034VmT6Uh68vW8mNSNwavMneGjNzk5lNtY=";
   };
 
-  cargoHash = "sha256-V9o/EYWqiW8Ipwxt0N6oT79BmByWHdDYeYQxL1dssdg=";
+  cargoHash = "sha256-xAsS/Bvvm1qlPoteONgEI0yzgUP3W4UN/SzSlJKGjzw=";
 
   nativeBuildInputs = [ rustPlatform.bindgenHook ];
 
