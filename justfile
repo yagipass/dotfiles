@@ -184,6 +184,8 @@ secrets:
   render maven-settings.xml.tpl "$HOME/.m2/work-settings.xml"
   render mavenrc.tpl "$HOME/.mavenrc"
   render work.gradle.tpl "$HOME/.gradle/init.d/work.gradle"
+  render oci-config.tpl "$HOME/.oci/config"
+  render oci-readonly.pem.tpl "$HOME/.oci/oci-readonly.pem"
   if [[ "{{os()}}" == macos ]]; then
     op inject --in-file templates/caddy-keychain.tpl | sudo security -i
     echo "stored caddy-cloudflare in the System keychain"
