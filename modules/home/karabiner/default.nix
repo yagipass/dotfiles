@@ -1,8 +1,7 @@
-_:
+{ config, lib, ... }:
 
 {
-  xdg.configFile."karabiner/karabiner.json" = {
-    source = ./karabiner.json;
-    force = true;
-  };
+  home.activation.karabinerConfig = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
+    run install -D -m 644 $VERBOSE_ARG ${./karabiner.json} ${lib.escapeShellArg "${config.xdg.configHome}/karabiner/karabiner.json"}
+  '';
 }
